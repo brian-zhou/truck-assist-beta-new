@@ -142,6 +142,7 @@
                             <option>De Wet Vrugte en Vervoer</option>
                             <option>Decore</option>
                             <option>DMJ</option>
+                            <option>Duncan Stead</option>
                             <option>Eldo Coaches</option>
                             <option>Fox Transport</option>
                             <option>Goenberg</option>
@@ -152,6 +153,7 @@
                             <option>Harmhout</option>
                             <option>Herlendir Transport</option>
                             <option>HG Travel Services</option>
+                            <option>Jahvis Transport</option>
                             <option>JJZ Gerber Houtwerke BK</option>
                             <option>Johista</option>
                             <option>Justin Lusso</option>
