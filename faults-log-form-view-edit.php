@@ -77,19 +77,8 @@ session_start();
 									<div class="job-details">
 <?php
 include('include/connection.php');
-//include('faults-log-form-submit.php');
 
 header("content-type:image/jpeg");
-$name=$_GET['button_id'];
-$select_image="select * from logged_faults where upload_picture_name='$imagename'";
-$var=mysql_query($select_image);
-if($row=mysql_fetch_array($var)){
- $image_name=$row["upload_picture_name"];
- $image_content=$row["upload_picture"];
-}
-echo $image_name;
-
-
 $button_id = $_POST['button_id'];
 
 foreach ($button_id as $selected_user_id) {
@@ -179,33 +168,29 @@ foreach ($button_id as $selected_user_id) {
                 <label>
                     <input type="radio" name="radio" value="No" checked="checked">No</label>
             </div>
+            <hr>
             <br>
-            <br>
-            <form method="GET" action="">
-            <label for="fleet-number">View picture of damaged device:</label>
-            <p>
-                <input type="file" name="fileToUpload">
-            </p>
-            <p>
-                <input type="submit" value="Display" name="display_image">
-            </p>
-            </form>
-            <br>
-<?php
-$getname = $_GET[' your_imagename '];
-echo "< img src = fetch_image.php?name='.$getname.' width=200 height=200 >";
-?>
-
+            
             <div class="form-group">
                 <label for="date">Date Logged: &nbsp;&ensp;&ensp;</label>
-                <input type="date" name="date-of-log" value="<?php $date_of_log = @date("Y-m-d", strtotime($_POST["date_of_log"]));
-	        	 	echo $date_of_log;?>" readonly>
+                <input type="date" name="date-of-log" value="<?php echo $date_of_log;?>" readonly>
             </div>
 
             <div class="form-group">
                 <label for="date">Date Completed:</label>
                 <input type="date" name="date-of-complete" value="<?php echo $date_of_complete; ?>">
             </div>  
+            
+            <br>
+            <hr>
+
+          
+            <label for="fleet-number">Preview of damaged device image:</label>
+            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?>
+            <p>TO DOWNLOAD: Right click > Save image as</p>          
+            
+            
+            
         </div>
 
         <div class="col-sm-4">

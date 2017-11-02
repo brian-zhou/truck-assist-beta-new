@@ -86,8 +86,9 @@ session_start();
                                     <h4>
                                 
                                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
-                                        <a href=""><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-export"></span> Export CSV</button></a>
+                                        <a href="csv-mysql-test.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-export"></span> Export CSV</button></a>
                                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
+                                        <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                                         <a href="faults-log-report.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                                         </p>
                                     </h4> 
@@ -151,7 +152,6 @@ include('include/connection.php');
      else {
         echo "0 results returned";
     }
-    
 mysqli_close($conn);
 ?>
                                 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
     <script src="highcharts/highcharts-3d.js"></script>
     <script src="highcharts/modules/exporting.js"></script>
   
-	</head>
+</head>
 
 	<body>
 	  <div id="st-container" class="st-container">
@@ -89,6 +89,16 @@
                         </p>
                     </h4>
         <br>
+<?php
+include('include/connection.php');
+
+    $sql = "SELECT * FROM logged_faults";
+    $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)){
+          	$data[] = $row['logged_by'];
+          	var_dump($data);
+           	}
+?>
         
         <div id="container" style="height: 400px"></div>
         
@@ -138,6 +148,9 @@
                         }]
                     });
                 </script>
+<?php
+mysqli_close($conn);
+?>
 										</dl>
 										
 									</div>

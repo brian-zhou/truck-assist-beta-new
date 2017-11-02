@@ -312,7 +312,7 @@ PAGE HEADER
 
 @media(min-width:767px) { 
     .page-header-wrapper{
-        min-height: 350px;
+        min-height: 0px;
     }
 }
 

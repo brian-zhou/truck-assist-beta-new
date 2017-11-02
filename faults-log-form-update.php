@@ -45,15 +45,16 @@
 	$client_name = $_POST["client-name"];
 	$repaired_by = $_POST["repaired-by"];
 	$fault_confirmed = $_POST["radio"];
-        $fault_type = $_POST["fault-type"];
-        $type_of_damage = implode(", ",$fault_type); 
-        
+        //$fault_type = $_POST["fault-type"];
+        //$type_of_damage = implode(", ",$fault_type); 
 	$date_of_log = $_POST["date-of-log"];
 	$date_of_complete = $_POST["date-of-complete"];
-	$upload_picture = $_POST["fileToUpload"];
+        echo $date_of_log;
+        echo $date_of_complete;
+	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
         
-        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', type_of_damage = '$type_of_damage',additional_notes = '$additional_notes' WHERE id = $button_id";
+        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', additional_notes = '$additional_notes' WHERE id = $button_id";
 
 			if (mysqli_query($conn, $sql)) {
     			//echo "New record updated successfully";
@@ -121,21 +122,10 @@
                         <p><b>Registration <sup>no.</sup> </b> <?php echo $reg_number; ?></p>
                         <p><b>Fleet <sup>no.</sup> </b> <?php echo $fleet_number; ?></p>
                         <p><b>Repaired by </b> <?php echo $repaired_by; ?></p>
-                        <p><b>Type of Fault: </b> <br><ul><?php  
-	        	 	foreach ($fault_type as $type_of_damage){
-                                    echo '<li>' . $type_of_damage . '</li>' . '<br/>';        
-                                };
-                                echo "</ul>";
-	        	  ?>
-                        <p><b>Date of Log: </b> <?php $date_of_log = @date("Y-m-d", strtotime($_POST["date_of_log"]));
-	        	 	echo $date_of_log;?>
-                        </p>
-                        <p><b>Date of Completed: </b> <?php $date_of_complete = @date("Y-m-d", strtotime($_POST["date_of_complete"]));
-                            echo $date_of_complete;
-                        ?>    
-                        </p>
-
-                        <p><b>Uploaded Picture of Repair: </b> <?php echo $upload_picture; ?></p>
+                        <p><b>Type of Fault: </b> Previously specified damage saved</p>
+                        <p><b>Date of Log: </b> <?php echo $date_of_log;?></p>
+                        <p><b>Date of Completed: </b> <?php echo $date_of_complete;?></p>
+                        <p><b>Uploaded Picture of Damage: </b> Previously uploaded picture saved</p>
 	        	<p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>	
 	        </fieldset>   
             </div>

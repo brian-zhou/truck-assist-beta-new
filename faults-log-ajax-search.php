@@ -96,7 +96,6 @@ include('include/connection.php');
                         <b>Start typing a company name in the input field below or </b>
                         <!--button type="submit" class="btn btn-info">Download PDF</button-->
                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
-                        <a href=""><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-export"></span> Export CSV</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
