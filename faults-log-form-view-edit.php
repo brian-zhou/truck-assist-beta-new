@@ -78,7 +78,7 @@ session_start();
 <?php
 include('include/connection.php');
 
-header("content-type:image/jpeg");
+@header("content-type:image/jpeg");
 $button_id = $_POST['button_id'];
 
 foreach ($button_id as $selected_user_id) {
@@ -159,7 +159,7 @@ foreach ($button_id as $selected_user_id) {
         </div>
 
         <div class="col-sm-4">
-            <label for="fault-confirmed">Fault Confirmed?</label>
+            <label for="fault-confirmed">Fault Completed</label>
             <div class="radio">
                 <label>
                     <input type="radio" name="radio" value="Yes">Yes</label>
