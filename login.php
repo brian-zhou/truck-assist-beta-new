@@ -55,7 +55,7 @@ session_start();
 
 
 				<div class="container">
-					<div class="content-wrapper" style="margin-top: -15%; margin-left: 31%; margin-right: 31%; margin-bottom: 141%";>
+					<div class="content-wrapper" style="margin-top: 5%; margin-left: 31%; margin-right: 31%; margin-bottom: 141%";>
 						<div class="job-page-wrapper">
 							<div class="row">
 								<div class="col-md-12">
