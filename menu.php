@@ -17,9 +17,9 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class='collapse navbar-collapse navbar-collapse'>
 								<ul class='nav navbar-nav navbar-right'>
-									<li class='active'><a href='login-home.php'>Home</a></li>
+									<li class='active'><a href='login-home.php'>HOME</a></li>
 
-									<li class='dropdown'><a href='' >Quality Control <b class='caret'></b></a>
+									<li class='dropdown'><a href='' >QUALITY CONTROL <b class='caret'></b></a>
 										<!-- submenu-wrapper -->
 										<div class='submenu-wrapper submenu-wrapper-topbottom'>
 											<div class='submenu-inner  submenu-inner-topbottom'>
@@ -33,7 +33,7 @@
 										</div> <!-- /.submenu-wrapper -->
 									</li>
 
-									<li class='dropdown'><a href='#' >IT Support <b class='caret'></b></a>
+									<li class='dropdown'><a href='#' >IT SUPPORT <b class='caret'></b></a>
 										<!-- submenu-wrapper -->
 										<div class='submenu-wrapper submenu-wrapper-topbottom'>
 											<div class='submenu-inner  submenu-inner-topbottom'>
@@ -45,7 +45,7 @@
 										</div> <!-- /.submenu-wrapper -->
 									</li>
 
-									<li class='dropdown'><a href='#' >Operations <b class='caret'></b></a>
+									<li class='dropdown'><a href='#' >OPERATIONS <b class='caret'></b></a>
 										<!-- submenu-wrapper -->
 										<div class='submenu-wrapper submenu-wrapper-topbottom'>
 											<div class='submenu-inner  submenu-inner-topbottom'>
@@ -58,7 +58,7 @@
 										</div> <!-- /.submenu-wrapper -->
 									</li>
 
-									<li class='dropdown'><a href='#' >Logistics <b class='caret'></b></a>
+									<li class='dropdown'><a href='' >LOGISTICS <b class='caret'></b></a>
 										<!-- submenu-wrapper -->
 										<div class='submenu-wrapper submenu-wrapper-topbottom'>
 											<div class='submenu-inner  submenu-inner-topbottom'>
@@ -69,7 +69,7 @@
 										</div> <!-- /.submenu-wrapper -->
 									</li>
 
-									<li><a href='contact.html'>Feedback</a></li>
+									<li><a href='contact.php'>FEEDBACK</a></li>
 									<li class=''><a href='logout.php'><span class='glyphicon glyphicon-log-out'> Logout </span></a></li>
 								</ul>
 							</div><!-- /.navbar-collapse -->
