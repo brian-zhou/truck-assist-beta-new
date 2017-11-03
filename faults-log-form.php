@@ -74,7 +74,7 @@
 									<div class="job-details">
 										<h4>
                         <p>Log a Fault
-                            <a href=""><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
+                            <a href="dom-pdf-test.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
@@ -186,6 +186,7 @@
                     <div class="form-group">
                         <label for="sel1">Repaired by:</label>
                         <select class="form-control" id="repaired-by" name="repaired-by">
+                            <option>Not yet repaired</option>
                             <option>Richard</option>
                             <option>Cale</option>
                             <option>Kuda</option>
