@@ -185,9 +185,11 @@ foreach ($button_id as $selected_user_id) {
             <hr>
 
           
-            <label for="fleet-number">Preview of damaged device image:</label>
-            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?>
-            <p>TO DOWNLOAD: Right click > Save image as</p>          
+            <label for="fleet-number">Preview of damaged device image:</label>    
+         
+                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?>
+       
+            <p>TO DOWNLOAD: Right click > Save image as</p>   
             
             
             
