@@ -300,13 +300,13 @@ if(!$fgmembersite->CheckLogin())
 		<!-- ======== OFFCANVAS MENU ========= -->
 	    <div class="offcanvas-menu offcanvas-effect visible-xs">
 	      <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
-	      <h3>Sidebar Menu</h3>
+	      <h3>Truck Assist Menu</h3>
 	      	<div>
 		      <div>
 				<ul>
-					<li><a href="#">Home</a>
+                                    <li><a href="login-home.php">Home</a>
 						<ul>
-							<li class="active"><a href="index.html"><i class="fa fa-home"></i> Home Style One</a></li>
+                                                    <li class="active"><a href="logout.php"><i class="fa fa-home"></i>Logout</a></li>
 						</ul>
 					</li>
 
@@ -352,6 +352,7 @@ if(!$fgmembersite->CheckLogin())
 			  </div>
 			</div>
 	    </div><!-- .offcanvas-menu -->
+            
 	  </div><!-- /st-container -->
 
 
