@@ -74,7 +74,7 @@
 									<div class="job-details">
 										<h4>
                         <p>Log a Fault
-                            <a href="dom-pdf-test.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
+                            <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
