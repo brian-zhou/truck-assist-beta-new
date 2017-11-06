@@ -82,7 +82,7 @@ session_start();
                 <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2>List of Logged faults</h2>
+                                    <h2>List of all logged faults</h2>
                                     <h4>
                                 
                                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
