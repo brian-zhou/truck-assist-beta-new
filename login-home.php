@@ -62,6 +62,13 @@ if(!$fgmembersite->CheckLogin())
                                </div>
                             <!-- end of main menu-->
 
+<!--from original page>
+<div id='fg_membersite_content'>
+<p>Welcome back <?= $fgmembersite->UserFullName(); ?>!</p>
+<p><a href='change-pwd.php'>Change password</a></p>
+<p><a href='logout.php'>Logout</a></p>
+</div>
+<end from original page-->
 
                 <div id="x-corp-carousel" class="carousel slide hero-slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -203,17 +210,17 @@ if(!$fgmembersite->CheckLogin())
 
 						
 						<section class="trusted-client-wrapper">
-							<h2 class="section-title wow fadeInDown">Some of out clients</h2>
-							<ul class="partner-logo">
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-1.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-2.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-3.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-4.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-5.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-6.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-7.png" alt=""></a></li>
+							<h2 class="section-title wow fadeInDown">Some of Truck Assist's clients</h2>
+                                                        <ul class="partner-logo" style="">
+								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-1.png" alt=""></a></li-->
+                                                            <li class="wow zoomIn" style="width: 20%;"><a href="#"><img src="img/partner/atang.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/cosworth.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/eldo.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/grain.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/wamatha.png" alt=""></a></li>
+								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-7.png" alt=""></a></li>
 								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-8.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-9.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-9.png" alt=""></a></li-->
 							</ul>
 						</section>
 
@@ -304,9 +311,9 @@ if(!$fgmembersite->CheckLogin())
 	      	<div>
 		      <div>
 				<ul>
-                                    <li><a href="login-home.php">Home</a>
+                       <li><a href="login-home.php">Home</a>
 						<ul>
-                                                    <li class="active"><a href="logout.php"><i class="fa fa-home"></i>Logout</a></li>
+                            <li class="active"><a href="logout.php"><i class="fa fa-home"></i>Logout</a></li>
 						</ul>
 					</li>
 
@@ -332,7 +339,6 @@ if(!$fgmembersite->CheckLogin())
 						</ul>
 					</li>
 
-
 					<li><a href="#">Pages</a>
 						<ul>
 							<li><a href="job-page.html"><i class="fa fa-briefcase"></i> Job Page</a></li>
@@ -341,7 +347,6 @@ if(!$fgmembersite->CheckLogin())
 							<li><a href="typography.html"><i class="fa fa-puzzle-piece"></i> Typography Page</a></li>
 						</ul>
 					</li>
-
 
 					<li><a href="#">Contact</a>
 						<ul>
