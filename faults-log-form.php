@@ -109,7 +109,7 @@
                             <option>Riyaz</option>
                             <option>Marius</option>
                             <option>Sheri</option>
-                            <option>Mayda</option>
+                            <option>Magda</option>
                         </select>
                     </div>
 
@@ -148,6 +148,7 @@
                             <option>Goenberg</option>
                             <option>GP van Niekerk</option>
                             <option>Grain Carriers South Africa</option>
+                            <option>Grain Carriers Namibia</option>
                             <option>Groenberg Cartage</option>
                             <option>H&M Removals</option>
                             <option>Harmhout</option>
@@ -270,7 +271,7 @@
                 
               
                     <label for="upload-picture">Upload picture of damaged device:</label>
-                    <p><input type="file" name="fileToUpload" id=""></p>
+                    <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
                     <!--p><input type="submit" value="Upload Image" name="submit"></p-->
               
                 <br>
