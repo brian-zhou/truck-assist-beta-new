@@ -54,14 +54,13 @@
 	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
         
-        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', additional_notes = '$additional_notes' WHERE id = $button_id";
+        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', additional_notes = '$additional_notes', $repaired_by = '$repaired_by' WHERE id = $button_id";
 
 			if (mysqli_query($conn, $sql)) {
     			//echo "New record updated successfully";
 			} else {
     			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
-
 ?>
 
 	<body>
@@ -91,8 +90,6 @@
 						</div><!-- /.row -->
 					</div><!-- /.container-fluid -->
 				</section>
-
-
 				<div class="container">
 					<div class="content-wrapper">
 						<div class="job-page-wrapper">
