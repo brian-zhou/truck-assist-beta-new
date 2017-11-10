@@ -2242,7 +2242,7 @@ DROPDOWN CSS
 
 .nav.navbar-nav li ul.dropdown-menu li a{
     padding        : 7px 20px;
-    font-size      : 13px;
+    font-size      : 16px;
     color          : #fff;
     line-height    : 20px; 
     text-transform : capitalize;

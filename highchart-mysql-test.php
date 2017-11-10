@@ -35,6 +35,7 @@
     <script src="highcharts/highcharts.js"></script>
     <script src="highcharts/highcharts-3d.js"></script>
     <script src="highcharts/modules/exporting.js"></script> 
+    <link rel="shortcut icon" href="img/truck-2.ico">
 </head>
 
 <body>

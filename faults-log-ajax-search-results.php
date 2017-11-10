@@ -116,7 +116,8 @@ if (mysqli_num_rows($result)>0){
         echo "<th>Fault Type</th>";
         echo "<th>Date Logged</th>";
         echo "<th>Date Completed</th>";
-        echo "<th>Picture Upload</th>";
+        //echo "<th>Picture Upload</th>";
+        echo "<th>Uploaded Picture Name</th>";
         echo "<th>Addtional Notes</th>";
         echo "<th>View/Edit Record</th>";
         echo "<br>";
@@ -143,7 +144,8 @@ if (mysqli_num_rows($result)>0){
                 echo "<td>" . $row["type_of_damage"] . "</td>"; 
                 echo "<td>" . $row["date_of_log"] . "</td>";
                 echo "<td>" . $row["date_of_complete"] . "</td>"; 
-                echo "<td>" . $row["upload_picture"] . "</td>";
+                //echo "<td>" . $row["upload_picture"] . "</td>";
+                echo "<td>" . $row["upload_picture_name"] . "</td>";
                 echo "<td>" . $row["additional_notes"] . "</td>";
                 echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
                 }

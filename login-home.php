@@ -39,6 +39,7 @@ if(!$fgmembersite->CheckLogin())
     <link href="css/style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/truck-2.ico">
 
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
     <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -145,7 +146,7 @@ if(!$fgmembersite->CheckLogin())
 									<p class="wow fadeInDown">Send suggestions and feedback to support@truckassist.co.za</p>
 
 									<h3 class="wow fadeInDown">The Mission</h3>
-									<p class="wow fadeInDown">Is to reduce use of paper as far as possible and get all processes web based stored in a central database.</p>
+									<p class="wow fadeInDown">Our company has been built on ethical, cost effective and competent service offerings. Wholly understanding and reducing our clients’ exposure to risk is fundamental to our success.</p>
 
 									<a class="btn btn-primary wow fadeInDown" href="#" role="button">Read More</a>
 								</div>
@@ -156,7 +157,7 @@ if(!$fgmembersite->CheckLogin())
 
 
 						<section class="service-wrapper">
-							<h2 class="section-title wow fadeInDown">Quick links</h2>
+							<h2 class="section-title wow fadeInDown">Core Services</h2>
 				            <div class="row">
 				              <div class="col-md-6 wow fadeInRight">
 				                <div class="media">
@@ -164,8 +165,8 @@ if(!$fgmembersite->CheckLogin())
 				                    <span class="icon bg1 flaticon-increasing5"></span>
 				                  </a>
 				                  <div class="media-body">
-				                    <h3 class="media-heading"><a href="#">Logistics</a></h3>
-				                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+				                    <h3 class="media-heading"><a href="#">Online Portals</a></h3>
+				                    <p>We provide affordable tracking devices, online portals and risk management to both corporates and individuals.</p>
 				                  </div> <!-- /.media-body -->
 				                </div> <!-- /.media -->
 				              </div> <!-- /.col-md-6 -->
@@ -176,8 +177,8 @@ if(!$fgmembersite->CheckLogin())
 				                    <span class="icon bg2 flaticon-syncing"></span>
 				                  </a>
 				                  <div class="media-body">
-				                    <h3 class="media-heading"><a href="#">IT</a></h3>
-				                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+				                    <h3 class="media-heading"><a href="#">Tracking</a></h3>
+				                    <p>Our portal clients are able to track their assets with impressive accuracy and receive notifications of any misdemeanors committed by drivers.</p>
 				                  </div> <!-- /.media-body -->
 				                </div> <!-- /.media -->
 				              </div> <!-- /.col-md-6 -->
@@ -188,8 +189,8 @@ if(!$fgmembersite->CheckLogin())
 				                    <span class="icon bg3 flaticon-file24"></span>
 				                  </a>
 				                  <div class="media-body">
-				                    <h3 class="media-heading"><a href="#">Operations</a></h3>
-				                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+				                    <h3 class="media-heading"><a href="#">Ops Centre</a></h3>
+				                    <p>Our Operations Centre is open 24/7 to attend to your company’s incidents, such as accidents, hijacks or spills.</p>
 				                  </div> <!-- /.media-body -->
 				                </div> <!-- /.media -->
 				              </div> <!-- /.col-md-6 -->
@@ -200,8 +201,8 @@ if(!$fgmembersite->CheckLogin())
 				                    <span class="icon bg4 flaticon-royalty"></span>
 				                  </a>
 				                  <div class="media-body">
-				                    <h3 class="media-heading"><a href="#">Admin</a></h3>
-				                    <p>Assertively target turnkey technologies whereas covalent ROI. Distinctively grow viral mindshare rather than collaborative meta-services redibly initiate.</p>
+				                    <h3 class="media-heading"><a href="#">Our Philosophy</a></h3>
+				                    <p>Our company has been built on ethical, cost effective and competent service offerings. Wholly understanding and reducing our clients’ exposure to risk is fundamental to our success.</p>
 				                  </div> <!-- /.media-body -->
 				                </div> <!-- /.media -->
 				              </div> <!-- /.col-md-6 -->

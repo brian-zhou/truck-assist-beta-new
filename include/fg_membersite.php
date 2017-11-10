@@ -24,15 +24,13 @@ require_once("formvalidator.php");
 class FGMembersite
 {
     var $admin_email;
-    var $from_address;
-    
+    var $from_address;  
     var $username;
     var $pwd;
     var $database;
     var $tablename;
     var $connection;
     var $rand_key;
-    
     var $error_message;
     
     //-----Initialization -------
@@ -516,7 +514,7 @@ class FGMembersite
             return false;
         }
         $mailer = new PHPMailer();
-        
+         
         $mailer->CharSet = 'utf-8';
         
         $mailer->AddAddress($this->admin_email);

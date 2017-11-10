@@ -30,6 +30,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/truck-2.ico">
 
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
     <script src="highcharts/highcharts.js"></script>

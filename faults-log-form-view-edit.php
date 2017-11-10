@@ -33,7 +33,7 @@ session_start();
     <link href="css/style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
-
+    <link rel="shortcut icon" href="img/truck-2.ico">
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
   
 	</head>
@@ -143,7 +143,7 @@ foreach ($button_id as $selected_user_id) {
 
                 <div class="form-group">
                     <label for="repaired-by">Repaired by:</label>
-                    <input type="text" class="form-control" name="repaired-by" value="<?php echo $repaired_by; ?>" readonly>
+                    <input type="text" class="form-control" name="repaired-by" value="<?php echo $repaired_by; ?>">
                 </div>
 
                 <div class="form-group">

@@ -30,6 +30,7 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/truck-2.ico">
 
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
   
@@ -38,9 +39,48 @@
 include('include/connection.php');
 
 $imagename=$_FILES["fileToUpload"]["name"]; 
+$uploadOk = 1;
+$imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
 
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($imagename)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else{
 //Get the content of the image and then add slashes to it 
 $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } 
 
 //mysql_query($insert_image);
 	$logged_by = $_POST["logged-by"];
@@ -139,40 +179,26 @@ $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 <br>
         <div class="row">
         	
-        	 <div class="col-sm-4" style="">
-        	 	<fieldset>
-        	 		<legend>Details of fault logged</legend>
-	        	 <p><b>Logged by:</b> <?php echo $logged_by; ?></p>
-                         <p><b>Client's name:</b> <?php echo $client_name; ?></p>
-	        	 <p><b>Registration <sup>no.</sup> </b> <?php echo $reg_number; ?></p>
-	        	 <p><b>Fleet <sup>no.</sup> </b> <?php echo $fleet_number; ?></p>
-
-	        	 <p><b>Repaired by: </b> <?php echo $repaired_by; ?></p>
-	        	 <p><b>Type of Fault: </b> <br><ul><?php  
-	        	 	foreach ($fault_type as $type_of_damage){
+<div class="col-sm-4" style="">
+<fieldset>
+<legend>Details of fault logged</legend>
+<p><b>Logged by:</b> <?php echo $logged_by; ?></p>
+<p><b>Client's name:</b> <?php echo $client_name; ?></p>
+<p><b>Registration <sup>no.</sup> </b> <?php echo $reg_number; ?></p>
+<p><b>Fleet <sup>no.</sup> </b> <?php echo $fleet_number; ?></p>
+<p><b>Repaired by: </b> <?php echo $repaired_by; ?></p>
+<p><b>Type of Fault: </b> <br><ul><?php foreach ($fault_type as $type_of_damage){
                                     echo '<li>' . $type_of_damage . '</li>' . '<br/>';        
-                                };
-                                echo "</ul>";
-	        	  ?></p>
-	        	 <p><b>Date of Log: </b> <?php $date_of_log = @date("Y-m-d", strtotime($_POST["date_of_log"]));
-	        	 	echo $date_of_log;
-	        	  ?></p>
-
-                  <p><b>Date of Completed: </b> <?php $date_of_complete = @date("Y-m-d", strtotime($_POST["date_of_complete"]));
-                    echo $date_of_complete;
-                  ?></p>
-
-                   <p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p>
-
-	        	 <p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
-	        	
-	        	</fieldset>
-
-                
-	        </div>
-
+                                }; echo "</ul>";
+?></p>
+<p><b>Date of Log: </b> <?php $date_of_log = @date("Y-m-d", strtotime($_POST["date_of_log"])); echo $date_of_log;?></p>
+<p><b>Date of Completed: </b> <?php $date_of_complete = @date("Y-m-d", strtotime($_POST["date_of_complete"])); echo $date_of_complete;
+?></p>
+<p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p>
+<p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
+</fieldset>
+</div>
         	 <div class="col-sm-4" style="">
-
         	 </div>
 
         	  <div class="col-sm-4" style="">
@@ -185,7 +211,6 @@ $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 						</div><!-- /.job-page-wrapper -->
 					</div><!-- /.content-wrapper -->
 				</div><!-- /.container -->
-
 
 				<section class="footer-widget-wrapper">
 					<div class="container">

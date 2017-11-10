@@ -36,6 +36,7 @@ $fgmembersite->LogOut();
     <link href="css/style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/truck-2.ico">
 
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
   
@@ -75,9 +76,9 @@ $fgmembersite->LogOut();
 								<div class="col-md-12">
 									
 									<div class="job-details">
-										<dl>
-											<dt>You have succesfully logged out</dt>
-											<dd><p><a href="index.php"> Login Again<span class="glyphicon glyphicon-log-out"></span></a></p></dd>
+										<dl style="font-size: large;">
+											<dt>You have successfully logged out</dt>
+											<dd><p><a href="index.html"> Login Again<span class="glyphicon glyphicon-log-out"></span></a></p></dd>
 										</dl>
 										
 									</div>
