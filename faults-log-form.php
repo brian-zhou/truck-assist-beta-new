@@ -111,7 +111,7 @@
                             <option>Marius</option>
                             <option>Shari</option>
                             <option>Magda</option>
-                            <option>Brian</option>
+                            <option>Brian Z</option>
                         </select>
                     </div>
 
