@@ -111,7 +111,7 @@
                             <option>Marius</option>
                             <option>Shari</option>
                             <option>Magda</option>
-                            <option>Brian Z</option>
+                            <option>Brian</option>
                         </select>
                     </div>
 
@@ -161,6 +161,7 @@
                             <option>Johista</option>
                             <option>Justin Lusso</option>
                             <option>Leon Van Vuuren Bulk Carriers</option>
+                            <option>Liberty Foods</option>
                             <option>LMC Express</option>
                             <option>Lucerne Transport</option>
                             <option>M&A Logistics</option>
