@@ -96,7 +96,7 @@ session_start();
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="margin-left: -17%">
                             
 <?php
 include('include/connection.php');

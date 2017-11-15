@@ -109,7 +109,7 @@
                             <option>Servious</option>
                             <option>Riyaz</option>
                             <option>Marius</option>
-                            <option>Sheri</option>
+                            <option>Shari</option>
                             <option>Magda</option>
                         </select>
                     </div>
@@ -192,7 +192,7 @@
                             <option>Not yet repaired</option>
                             <option>Richard</option>
                             <option>Cale</option>
-                            <option>Kuda</option>
+                            <option>Kudakwashe</option>
                             <option>Clinton</option>
                             <option>Jacob</option>
                             <option>Chris</option>
