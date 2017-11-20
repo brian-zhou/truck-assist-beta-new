@@ -38,7 +38,54 @@
 <?php
 include('include/connection.php');
 
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imagename=$_FILES["fileToUpload"]["name"]; 
+
+//Get the content of the image and then add slashes to it 
+$imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+
+$uploadOk = 1;
+$imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
+//echo $imageFileType;
+
+/* START OF IMAGE UPLOAD LOG*/
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "The picture is a valid image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "The picture is not a valid image.";
+        $uploadOk = 0;
+    }
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else{
+//Get the content of the image and then add slashes to it 
+$imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded succesfully.";
+    }
+/* END OF IMAGE UPLOAD LOG*/
+
+/*$imagename=$_FILES["fileToUpload"]["name"]; 
 $uploadOk = 1;
 $imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
 
@@ -80,7 +127,7 @@ if ($uploadOk == 0) {
 //Get the content of the image and then add slashes to it 
 $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } 
+    } */
 
 //mysql_query($insert_image);
 	$logged_by = $_POST["logged-by"];
@@ -179,7 +226,7 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 <br>
         <div class="row">
         	
-<div class="col-sm-4" style="">
+<div class="col-sm-6" style="">
 <fieldset>
 <legend>Details of fault logged</legend>
 <p><b>Logged by:</b> <?php echo $logged_by; ?></p>
@@ -194,14 +241,54 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 <p><b>Date of Log: </b> <?php $date_of_log = @date("Y-m-d", strtotime($_POST["date_of_log"])); echo $date_of_log;?></p>
 <p><b>Date of Completed: </b> <?php $date_of_complete = @date("Y-m-d", strtotime($_POST["date_of_complete"])); echo $date_of_complete;
 ?></p>
-<p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p>
+<!--p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p-->
 <p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
+<p>
+    <b>Picture Status: </b>
+    <?php
+    /* START OF IMAGE UPLOAD LOG*/
+            // Check if image file is a actual image or fake image
+            if(isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if($check !== false) {
+                    //echo "The picture is a valid image - " . $check["mime"] . "";
+                    $uploadOk = 1;
+                } else {
+                    echo "The picture is not a valid image.";
+                    $uploadOk = 0;
+                }
+            }
+
+            // Check file size
+            if ($_FILES["fileToUpload"]["size"] > 500000) {
+                echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                echo " Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+            }
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                echo " Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+            } else{
+            //Get the content of the image and then add slashes to it 
+            $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+            echo "". basename( $_FILES["fileToUpload"]["name"]). " is a valid image and has been uploaded succesfully.";
+                }
+            /* END OF IMAGE UPLOAD LOG*/
+                ?>
+</p>
+
 </fieldset>
 </div>
-        	 <div class="col-sm-4" style="">
-        	 </div>
+        	
 
-        	  <div class="col-sm-4" style="">
+        	  <div class="col-sm-6" style="">
         	  </div>     
       </div>
 										

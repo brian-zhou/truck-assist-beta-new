@@ -107,7 +107,7 @@ foreach ($button_id as $selected_user_id) {
     <br>
     <h4>
             <p>
-                Update this <span style="color: red;"><?php echo $client_name; ?></span> 's fault log entry logged by <span style="color: red;"><?php echo $logged_by; ?></span>
+                Update this <span style="color: red;"><?php echo $client_name; ?></span>'s fault log entry logged by <span style="color: red;"><?php echo $logged_by; ?></span>
          
             	<a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                 <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>

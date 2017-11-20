@@ -31,12 +31,23 @@
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/truck-2.ico">
-
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
-  
-	</head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<?php
 
 
+// if submitted check response
+if ($_POST["g-recaptcha-response"]) {
+    $response = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]
+    );
+}
+
+
+?>
 	<body>
 	  <div id="st-container" class="st-container">
 	    <div class="st-pusher">
@@ -44,7 +55,7 @@
 	        <div class="st-content-inner">
 			    <!-- start of main menu-->
                                <div class="menu">
-                                   <?php include 'menu.php';?>
+                <?php include 'menu.php';?>
                                </div>
                    <!-- end of main menu-->
 
@@ -80,7 +91,7 @@
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
                         <a href="login-home.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-off"></span> Exit</button></a>
-                        <h5 style="color: green"><?php echo "Today is " . @date("d-m-Y")?> </h5>
+                        
                         
                         </p>
                     </h4>
@@ -153,6 +164,7 @@
                             <option>Grain Carriers Namibia</option>
                             <option>Groenberg Cartage</option>
                             <option>H&M Removals</option>
+                            <option>Hal Transport</option>
                             <option>Harmhout</option>
                             <option>Herlendir Transport</option>
                             <option>HG Travel Services</option>
@@ -173,6 +185,7 @@
                             <option>RPH</option>
                             <option>Silver Meadow</option>
                             <option>Siyabonwa</option>
+                            <option>Sumeil Transport</option>
                             <option>Swartland Logistics</option>
                             <option>Tacet</option>
                             <option>Themba Transport</option>
@@ -205,7 +218,7 @@
 
             <div class="col-sm-4">
 
-                <label for="client-notified-of-tamper">Fault Completed?</label>
+                <label for="client-notified-of-tamper">Fault Confirmed?</label>
                 <div class="radio">
                     <label>
                         <input type="radio" name="radio" value="Yes">Yes</label>
@@ -253,6 +266,7 @@
             </div>
 
             <div class="col-sm-4">
+                <marquee><h4 style="color: green"><?php echo "Today is " . @date("d-m-Y")?> </h4></marquee>
                 <div class="form-group">
                     <label for="date">Date Logged: &nbsp;&ensp;&ensp;</label>
                     <input type="date" name="date-of-log">
@@ -289,7 +303,7 @@
 
         <hr>
         
-        <input type="submit" class="btn btn-success" value = "Save" style="margin-bottom: 40px;">
+        <input type="submit" name="submit" class="btn btn-success" value = "Save" style="margin-bottom: 40px;">
         </form>
             
 										
