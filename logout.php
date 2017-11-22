@@ -1,6 +1,5 @@
 <?PHP
 require_once("./include/membersite_config.php");
-
 $fgmembersite->LogOut();
 ?>
 
@@ -87,15 +86,6 @@ $fgmembersite->LogOut();
 						</div><!-- /.job-page-wrapper -->
 					</div><!-- /.content-wrapper -->
 				</div><!-- /.container -->
-
-
-		
-
-
-			
-
-
-		
 
 	    <!-- jQuery -->
 	    <script src="js/jquery.js"></script>

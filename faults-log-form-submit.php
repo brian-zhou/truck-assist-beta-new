@@ -36,6 +36,7 @@
   
 	</head>
 <?php
+
 include('include/connection.php');
 
 $target_dir = "uploads/";
@@ -142,6 +143,44 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 	$date_of_complete = $_POST["date-of-complete"];
 	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
+        
+/*START OF PHP MAIL*/
+
+        $to = "zama@truckassist.co.za, osman@truckassist.co.za, nastasha@truckassist.co.za, richard@truckassist.co.za, adrian@truckassist.co.za";
+        $subject = "New fault logged for $client_name";
+
+        $message = "
+        <html>
+            <head>
+                <title>Fault log alert</title>
+            </head>
+        <body>
+        <p>A new fault has been logged for $client_name by $logged_by</p>
+        <p>
+            <b>Registration No.: </b> $reg_number <br><br>
+            <b>Fleet No.: </b> $fleet_number <br><br>
+            <b>Repaired by: </b> $repaired_by <br><br>
+            <b>Fault confirmed?: </b> $fault_confirmed <br><br>
+            <b>Type of damage: </b> $type_of_damage <br><br>
+            <b>Date fault was logged:</b> $date_of_log <br><br>
+            <b>Date repair was completed: </b> $date_of_complete <br><br>
+            <b>Addidtional notes: </b> $additional_notes <br>
+        </p>
+        </body>
+        </html>
+        ";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        $headers .= 'From: <info@truckassist.co.za>' . "\r\n";
+        $headers .= 'Cc: brian@truckassist.co.za' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+
+/*END OF PHP MAIL*/
 
 	$sql = "INSERT INTO logged_faults(
             logged_by,
@@ -375,61 +414,11 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 	    </div> <!-- .st-pusher -->
 
 
-		<!-- ======== OFFCANVAS MENU ========= -->
-	    <div class="offcanvas-menu offcanvas-effect visible-xs">
-	      <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
-	      <h3>Mobile Menu</h3>
-	      	<div>
-		      <div>
-				<ul>
-					<li><a href="#">Home</a>
-						<ul>
-							<li class="active"><a href="index.html"><i class="fa fa-home"></i> Home Style One</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">About</a>
-						<ul>
-							<li><a href="about-us.html"><i class="fa fa-life-ring"></i> About Us</a></li>
-							<li><a href="about-me.html"><i class="fa fa-user"></i> About me</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">Blog</a>
-						<ul>
-							<li><a href="blog.html"><i class="fa fa-pencil-square-o"></i> Standard Blog</a></li>
-							<li><a href="blog-single.html"><i class="fa fa-pencil"></i> Single Article</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">Portfolio</a>
-						<ul>
-							<li><a href="portfolio-four.html"><i class="fa fa-picture-o"></i> Four Column</a></li>
-							<li><a href="portfolio-three.html"><i class="fa fa-paper-plane-o"></i> Three Column</a></li>
-							<li><a href="portfolio-two.html"><i class="fa fa-magic"></i> Two Column</a></li>
-						</ul>
-					</li>
-
-
-					<li><a href="#">Pages</a>
-						<ul>
-							<li><a href="job-page.html"><i class="fa fa-briefcase"></i> Job Page</a></li>
-							<li><a href="clients-page.html"><i class="fa fa-coffee"></i> Clients Page</a></li>
-							<li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ Page</a></li>
-							<li><a href="typography.html"><i class="fa fa-puzzle-piece"></i> Typography Page</a></li>
-						</ul>
-					</li>
-
-
-					<li><a href="#">Contact</a>
-						<ul>
-							<li><a href="contact.html"><i class="fa fa-envelope-o"></i> Contact</a></li>
-						</ul>
-					</li>
-				</ul>
-			  </div>
-			</div>
-	    </div><!-- .offcanvas-menu -->
+        <!-- ======== START OFFCANVAS MENU ========= -->
+                <div class="menu">
+                    <?php include 'menu-offcanvas.php';?>
+                </div>
+        <!-- ======== END OFFCANVAS MENU ========= -->
 	 </div><!-- /st-container -->
 
 

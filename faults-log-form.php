@@ -45,8 +45,6 @@ if ($_POST["g-recaptcha-response"]) {
         $_POST["g-recaptcha-response"]
     );
 }
-
-
 ?>
 	<body>
 	  <div id="st-container" class="st-container">
@@ -86,7 +84,7 @@ if ($_POST["g-recaptcha-response"]) {
 									<div class="job-details">
 										<h4>
                         <p>Log a Fault
-                            <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
+                        <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
@@ -172,10 +170,12 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>JJZ Gerber Houtwerke BK</option>
                             <option>Johista</option>
                             <option>Justin Lusso</option>
+                            <option>K&H Freight</option>
                             <option>Leon Van Vuuren Bulk Carriers</option>
                             <option>Liberty Foods</option>
                             <option>LMC Express</option>
                             <option>Lucerne Transport</option>
+                            <option>MA Duplessis</option>
                             <option>M&A Logistics</option>
                             <option>MultiSnack</option>
                             <option>New Aproach</option>
@@ -196,6 +196,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>M & A</option>
                             <option>Wamatha Logistics</option>
                             <option>WP Vleis</option>
+                            <option>Express Removals</option>
                             <option>Yatcht Camera</option>
                             <option>ZSS Security</option>
                         </select>
@@ -391,61 +392,12 @@ if ($_POST["g-recaptcha-response"]) {
 	    </div> <!-- .st-pusher -->
 
 
-		<!-- ======== OFFCANVAS MENU ========= -->
-	    <div class="offcanvas-menu offcanvas-effect visible-xs">
-	      <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas" id="off-canvas-close-btn">&times;</button>
-	      <h3>Mobile Menu</h3>
-	      	<div>
-		      <div>
-				<ul>
-					<li><a href="#">Home</a>
-						<ul>
-							<li class="active"><a href="index.html"><i class="fa fa-home"></i> Home Style One</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">About</a>
-						<ul>
-							<li><a href="about-us.html"><i class="fa fa-life-ring"></i> About Us</a></li>
-							<li><a href="about-me.html"><i class="fa fa-user"></i> About me</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">Blog</a>
-						<ul>
-							<li><a href="blog.html"><i class="fa fa-pencil-square-o"></i> Standard Blog</a></li>
-							<li><a href="blog-single.html"><i class="fa fa-pencil"></i> Single Article</a></li>
-						</ul>
-					</li>
-
-					<li><a href="#">Portfolio</a>
-						<ul>
-							<li><a href="portfolio-four.html"><i class="fa fa-picture-o"></i> Four Column</a></li>
-							<li><a href="portfolio-three.html"><i class="fa fa-paper-plane-o"></i> Three Column</a></li>
-							<li><a href="portfolio-two.html"><i class="fa fa-magic"></i> Two Column</a></li>
-						</ul>
-					</li>
-
-
-					<li><a href="#">Pages</a>
-						<ul>
-							<li><a href="job-page.html"><i class="fa fa-briefcase"></i> Job Page</a></li>
-							<li><a href="clients-page.html"><i class="fa fa-coffee"></i> Clients Page</a></li>
-							<li><a href="faq.html"><i class="fa fa-question-circle"></i> FAQ Page</a></li>
-							<li><a href="typography.html"><i class="fa fa-puzzle-piece"></i> Typography Page</a></li>
-						</ul>
-					</li>
-
-
-					<li><a href="#">Contact</a>
-						<ul>
-							<li><a href="contact.html"><i class="fa fa-envelope-o"></i> Contact</a></li>
-						</ul>
-					</li>
-				</ul>
-			  </div>
-			</div>
-	    </div><!-- .offcanvas-menu -->
+        <!-- ======== START OFFCANVAS MENU ========= -->
+                <div class="menu">
+                    <?php include 'menu-offcanvas.php';?>
+                </div>
+        <!-- ======== END OFFCANVAS MENU ========= -->
+        
 	 </div><!-- /st-container -->
 
 
