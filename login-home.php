@@ -7,12 +7,10 @@ if(!$fgmembersite->CheckLogin())
     $fgmembersite->RedirectToURL("login.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
-	<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -212,16 +210,16 @@ if(!$fgmembersite->CheckLogin())
 						
 						<section class="trusted-client-wrapper">
 							<h2 class="section-title wow fadeInDown">Some of Truck Assist's clients</h2>
-                                                        <ul class="partner-logo" style="">
+                             <ul class="partner-logo" style="">
 								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-1.png" alt=""></a></li-->
-                                                            <li class="wow zoomIn" style="width: 20%;"><a href="#"><img src="img/partner/atang.png" alt=""></a></li>
+                                <li class="wow zoomIn" style="width: 17%;"><a href="#"><img src="img/partner/atang.png" alt=""></a></li>
 								<li class="wow zoomIn"><a href="#"><img src="img/partner/cosworth.png" alt=""></a></li>
 								<li class="wow zoomIn"><a href="#"><img src="img/partner/eldo.png" alt=""></a></li>
 								<li class="wow zoomIn"><a href="#"><img src="img/partner/grain.png" alt=""></a></li>
 								<li class="wow zoomIn"><a href="#"><img src="img/partner/wamatha.png" alt=""></a></li>
-								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-7.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-8.png" alt=""></a></li>
-								<li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-9.png" alt=""></a></li-->
+								<li class="wow zoomIn" style="width: 20%;"><a href="#"><img src="img/partner/lmc.png" alt=""></a></li>
+								<li class="wow zoomIn"><a href="#"><img src="img/partner/imperial.png" alt=""></a></li>
+								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-9.png" alt=""></a></li-->
 							</ul>
 						</section>
 
