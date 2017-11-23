@@ -3,8 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -101,7 +100,7 @@ foreach ($button_id as $selected_user_id) {
                 $date_of_complete = $row["date_of_complete"]; 
                 $upload_picture = $row["upload_picture"];
                 $additional_notes = $row["additional_notes"];            
- 	} 
+ 			} 
     }
 ?>
     <br>
@@ -185,11 +184,14 @@ foreach ($button_id as $selected_user_id) {
             <hr>
 
           
-            <label for="fleet-number">Preview of damaged device image:</label>    
+            <label for="fleet-number">Preview of uploaded damaged device image:</label>    
          
-                <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?>
+                <p><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p>
        
-            <p>TO DOWNLOAD: Right click > Save image as</p>   
+            <!--p>TO DOWNLOAD: Right click > Save image as</p-->
+            <!--p><a href="download.php">Click here to download the picture</a></p-->  
+            <br>
+            <h4><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download the picture</a></p> </h4>
             
             
             
