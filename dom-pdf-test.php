@@ -13,8 +13,8 @@ class Font extends FontLib\Font {
     //this is a namespace fix:
 }
 use Dompdf\Dompdf;
-use Dompdf\Options;
-$html = ob_get_clean();
+use Dompdf\Options; 
+$html = ob_get_clean(); 
 
  $html = '
 <!DOCTYPE html>
