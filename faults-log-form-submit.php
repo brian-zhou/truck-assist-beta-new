@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +9,7 @@
 
     <title>Truck Assist</title>
     <!-- Web Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
     <!-- Flaticon CSS -->
     <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
     <!-- font-awesome CSS -->
@@ -23,7 +22,7 @@
     <!-- animate CSS -->
     <link href="css/animate.css" rel="stylesheet">
 	<!-- REVOLUTION BANNER CSS SETTINGS -->
-	<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -31,12 +30,9 @@
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/truck-2.ico">
-
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
-  
-	</head>
+</head>
 <?php
-
 include('include/connection.php');
 
 $target_dir = "uploads/";
@@ -146,7 +142,7 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
         
 /*START OF PHP MAIL*/
 
-        $to = "zama@truckassist.co.za, osman@truckassist.co.za, nastasha@truckassist.co.za, richard@truckassist.co.za, adrian@truckassist.co.za";
+        $to = "zama@truckassist.co.za, osman@truckassist.co.za, nastasha@truckassist.co.za, richard@truckassist.co.za, cale@truckassist.co.za, wendell@truckassist.co.za";
         $subject = "New fault logged for $client_name";
 
         $message = "
@@ -156,6 +152,7 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
             </head>
         <body>
         <p>A new fault has been logged for $client_name by $logged_by</p>
+        <p><a href='https://app.truckassist.co.za/faults-log-query-results.php'>Click this link to view this logged fault</a></p>
         <p>
             <b>Registration No.: </b> $reg_number <br><br>
             <b>Fleet No.: </b> $fleet_number <br><br>
@@ -202,7 +199,7 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 			'$client_name',
 			'$repaired_by',
 			'$fault_confirmed',
-                        '$type_of_damage',
+           	'$type_of_damage',
 			'$date_of_log',
 			'$date_of_complete',
 			'$imagetmp',
@@ -212,11 +209,9 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 			if (mysqli_query($conn, $sql)) {
     			echo "New record created successfully";
 			} else {
-    			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			}
+    				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+					}
 ?>
-
-
 	<body>
 	  <div id="st-container" class="st-container">
 	    <div class="st-pusher">
@@ -254,7 +249,7 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 									<h2>Submitted Faults Log Form</h2>
 									<div class="job-details">
 										 <h4>
-                        <p>Your form has been successfully submitted to <span style="color:red">Zama!</span>
+                        <p>Your form has been successfully submitted to <span style="color:red">the operations team</span>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
@@ -319,8 +314,8 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
             $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
             echo "". basename( $_FILES["fileToUpload"]["name"]). " is a valid image and has been uploaded succesfully.";
                 }
-            /* END OF IMAGE UPLOAD LOG*/
-                ?>
+        /* END OF IMAGE UPLOAD LOG*/
+    ?>
 </p>
 
 </fieldset>

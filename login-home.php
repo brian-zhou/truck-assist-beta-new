@@ -46,10 +46,7 @@ if(!$fgmembersite->CheckLogin())
 	    <script src="js/vendor/html5shim.js"></script>
 	    <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
-
-	</head>
-
-
+</head>
 	<body>
 	  <div id="st-container" class="st-container">
 	    <div class="st-pusher">
@@ -209,7 +206,7 @@ if(!$fgmembersite->CheckLogin())
 
 						
 						<section class="trusted-client-wrapper">
-							<h2 class="section-title wow fadeInDown">Some of Truck Assist's clients</h2>
+							<h2 class="section-title wow fadeInDown">Some off Truck Assist's clients</h2>
                              <ul class="partner-logo" style="">
 								<!--li class="wow zoomIn"><a href="#"><img src="img/partner/partner-logo-1.png" alt=""></a></li-->
                                 <li class="wow zoomIn" style="width: 17%;"><a href="#"><img src="img/partner/atang.png" alt=""></a></li>
@@ -286,7 +283,6 @@ if(!$fgmembersite->CheckLogin())
 					</div><!-- /.container -->
 				</section>
 
-
 				<footer class="footer-wrapper">
 					<div class="container">
 						<div class="row">
@@ -317,9 +313,6 @@ if(!$fgmembersite->CheckLogin())
 				<div class="status-mes"></div>
 			</div>
 		</div>
-
-
-
 	    <!-- jQuery -->
 	    <script src="js/jquery.js"></script>
 	    <!-- Bootstrap Core JavaScript -->

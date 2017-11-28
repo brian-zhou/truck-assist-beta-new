@@ -55,7 +55,7 @@ if ($_POST["g-recaptcha-response"]) {
                                <div class="menu">
                 <?php include 'menu.php';?>
                                </div>
-                   <!-- end of main menu-->
+                   <!-- end of main menu--> 
 
 				<section class="page-header-wrapper">
 					<div class="container">
@@ -155,6 +155,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>DMJ</option>
                             <option>Duncan Stead</option>
                             <option>Eldo Coaches</option>
+                            <option>Eljo</option>
                             <option>Fox Transport</option>
                             <option>Goenberg</option>
                             <option>GP van Niekerk</option>
@@ -254,7 +255,7 @@ if ($_POST["g-recaptcha-response"]) {
 
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="Camera Removed" name="fault-type[]">Camera Removed</label>
+                            <input type="checkbox" value="Camera Moved" name="fault-type[]">Camera Moved</label>
                     </div>
 
                     <div class="checkbox">
@@ -267,7 +268,7 @@ if ($_POST["g-recaptcha-response"]) {
             </div>
 
             <div class="col-sm-4">
-                <marquee><h4 style="color: green"><?php echo "Today is " . @date("d-m-Y")?> </h4></marquee>
+                <marquee><h5 style="color: green"><?php echo "Today is " . @date("d-m-Y")?> </h5></marquee>
                 <div class="form-group">
                     <label for="date">Date Logged: &nbsp;&ensp;&ensp;</label>
                     <input type="date" name="date-of-log">

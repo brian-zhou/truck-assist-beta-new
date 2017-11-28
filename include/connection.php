@@ -1,15 +1,14 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "truckassist";
-	$dbname = "truckassist";
+$servername = "localhost";
+$username = "root";
+$password = "truckassist";
+$dbname = "truckassist";
 
-	//create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
+//create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-	//check connection
-	if (!$conn){
+//check connection
+if (!$conn){
 		die("Connection failed: " . mysqli_connect_error());
 	}
-
 ?>

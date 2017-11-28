@@ -1,7 +1,7 @@
 <?PHP
 require_once("./include/membersite_config.php");
 $fgmembersite->LogOut();
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">

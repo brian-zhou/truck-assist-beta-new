@@ -53,8 +53,10 @@
         echo $date_of_complete;
 	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
+        $log_resolved = $_POST["log-resolved"];
+        $resolution_notes = $_POST["resolution-notes"];
         
-        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', additional_notes = '$additional_notes', repaired_by = '$repaired_by', date_of_complete = '$date_of_complete' WHERE id = $button_id";
+        $sql = "UPDATE logged_faults SET fault_confirmed = '$fault_confirmed', additional_notes = '$additional_notes', repaired_by = '$repaired_by', date_of_complete = '$date_of_complete', log_resolved = '$log_resolved', resolution_notes = '$resolution_notes' WHERE id = $button_id";
 
 			if (mysqli_query($conn, $sql)) {
     			//echo "New record updated successfully";
@@ -123,7 +125,9 @@
                         <p><b>Date of Log: </b> <?php echo $date_of_log;?></p>
                         <p><b>Date of Completed: </b> <?php echo $date_of_complete;?></p>
                         <p><b>Uploaded Picture of Damage: </b> Previously uploaded picture saved</p>
-	        	<p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>	
+	        	<p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
+                        <p><b>Resolution Notes: </b> <?php echo $resolution_notes; ?></p>
+                        <p><b>Fault resolved?: </b> <?php echo $log_resolved; ?></p>
 	        </fieldset>   
             </div>
 

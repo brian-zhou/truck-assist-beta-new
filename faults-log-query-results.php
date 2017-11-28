@@ -3,7 +3,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -96,8 +95,8 @@ session_start();
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12" style="margin-left: -17%">
-                            
+
+<div class="col-md-12" style="margin-left: -21%">                      
 <?php
 include('include/connection.php');
 
@@ -106,7 +105,7 @@ include('include/connection.php');
 
     echo "<form method = 'POST' action = 'faults-log-form-view-edit.php'>";
     if (mysqli_num_rows($result)>0){
-        echo "<table class='table table-hover table table-bordered'>";
+        echo "<table class='table table-hover table table-bordered' >";
         echo "<tr>";
         echo "<th>Logged By</th>";
         echo "<th>Registration No.</th>";
@@ -116,9 +115,11 @@ include('include/connection.php');
         echo "<th>Fault Confirmed</th>";
         echo "<th>Fault Type</th>";
         echo "<th>Date Logged</th>";
-        echo "<th>Date Completed</th>";
+        echo "<th>Date Resolved</th>";
         echo "<th>Uploaded Image Name</th>";
         echo "<th>Addtional Notes</th>";
+        echo "<th>Fault resolved?</th>";
+        echo "<th>Resolution Notes</th>";
         echo "<th>View/Edit Record</th>";
         echo "<br>";
         echo "<br>";
@@ -145,6 +146,9 @@ include('include/connection.php');
                 echo "<td>" . $row["date_of_complete"] . "</td>"; 
                 echo "<td>" . $row["upload_picture_name"] . "</td>";
                 echo "<td>" . $row["additional_notes"] . "</td>";
+                echo "<td>" . $row["log_resolved"] . "</td>"; 
+                echo "<td>" . $row["resolution_notes"] . "</td>";
+                
                 echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
              }
                 echo "</form>";
@@ -153,8 +157,7 @@ include('include/connection.php');
         echo "0 results returned";
     }
 mysqli_close($conn);
-?>
-                                </div>
+?></div>
                                 
                             </div>
                 </div><!-- /.container -->

@@ -30,6 +30,7 @@ session_start();
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/truck-2.ico">
@@ -152,7 +153,7 @@ foreach ($button_id as $selected_user_id) {
 
                 <div class="form-group">
                     <label for="Additional-notes">Additional Notes of Fault:</label>
-                    <input type="text" class="form-control" name="additional-notes" value="<?php echo $additional_notes; ?>">
+                    <input type="text" class="form-control" name="additional-notes" value="<?php echo $additional_notes; ?>" readonly>
                 </div>
 
         </div>
@@ -183,21 +184,63 @@ foreach ($button_id as $selected_user_id) {
             <br>
             <hr>
 
+            <!-- The Modal -->
+			<div id="myModal" class="modal">
+				  <span class="close">&times;</span>
+				  	<img class="modal-content" id="img01">
+				  <div id="caption"></div>
+			</div>
+
           
-            <label for="fleet-number">Preview of uploaded damaged device image:</label>    
+            <label for="upload-picture"><marquee direction = "up">Click on image to expand it</label>  </marquee>  
          
-                <p><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p>
-       
-            <!--p>TO DOWNLOAD: Right click > Save image as</p-->
-            <!--p><a href="download.php">Click here to download the picture</a></p-->  
+                <p><?php echo '<img id="myImg" src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p> 
             <br>
-            <h4><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download the picture</a></p> </h4>
-            
-            
-            
+            <h5><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download the picture</a></p> </h5>
+
+ <!-- Start of the Modal Javascript -->
+			<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			var img = document.getElementById('myImg');
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+			    modal.style.display = "block";
+			    modalImg.src = this.src;
+			    captionText.innerHTML = this.alt;
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+			    modal.style.display = "none";
+			}
+			</script>
+<!-- End of the Modal Javascript -->
+
         </div>
 
         <div class="col-sm-4">
+            <div class="form-group">
+                        <label for="sel1">Fault has been resolved</label>
+                        <select class="form-control" id="log-resolved" name="log-resolved">
+                            <option>YES</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+            <hr>
+        </div>
+        <hr>
+        <div class="col-sm-4">
+            <div class="form-group">
+                    <label for="Resolution-notes">Resolution Notes:</label>
+                    <input type="text" class="form-control" name="resolution-notes" value="Add resolution description here">
+                </div>
         </div>
         
         <hr>
@@ -206,15 +249,13 @@ foreach ($button_id as $selected_user_id) {
     </div>
 <?php             
 mysqli_close($conn);
-?>
-										
+?>								
 									</div>
 								</div>
 							</div>
 						</div><!-- /.job-page-wrapper -->
 					</div><!-- /.content-wrapper -->
 				</div><!-- /.container -->
-
 
 				<section class="footer-widget-wrapper">
 					<div class="container">

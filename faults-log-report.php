@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +9,7 @@
 
     <title>Truck Assist</title>
     <!-- Web Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
     <!-- Flaticon CSS -->
     <link href="fonts/flaticon/flaticon.css" rel="stylesheet">
     <!-- font-awesome CSS -->
@@ -23,7 +22,7 @@
     <!-- animate CSS -->
     <link href="css/animate.css" rel="stylesheet">
 	<!-- REVOLUTION BANNER CSS SETTINGS -->
-	<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -31,14 +30,12 @@
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/truck-2.ico">
-
+        
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
     <script src="highcharts/highcharts.js"></script>
     <script src="highcharts/highcharts-3d.js"></script>
     <script src="highcharts/modules/exporting.js"></script>
-  
-	</head>
-
+</head>
 	<body>
 	  <div id="st-container" class="st-container">
 	    <div class="st-pusher">

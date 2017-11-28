@@ -42,7 +42,7 @@
 													<li><a href=''>Database Maintenance</a></li>
 												</ul>
 											</div><!-- /.submenu-inner -->
-										</div> <!-- /.submenu-wrapper -->
+										</div> <!-- /.submenu-wrapper --> 
 									</li>
 
 									<li class='dropdown'><a href='#' >OPERATIONS <b class='caret'></b></a>
