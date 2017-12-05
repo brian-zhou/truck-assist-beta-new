@@ -68,6 +68,19 @@
 											</div><!-- /.submenu-inner -->
 										</div> <!-- /.submenu-wrapper -->
 									</li>
+                                                                        
+                                                                        <li class='dropdown'><a href='' >ADMINISTRATION <b class='caret'></b></a>
+										<!-- submenu-wrapper -->
+										<div class='submenu-wrapper submenu-wrapper-topbottom'>
+											<div class='submenu-inner  submenu-inner-topbottom'>
+												<ul class='dropdown-menu'>
+                                                                                                
+													<li><a href='leave-application-form.php'>Leave Application Form</a></li>
+                                                                                                        <li><a href='leave-application-query-results.php'>View all submitted leave requests</a></li>
+												</ul>
+											</div><!-- /.submenu-inner -->
+										</div> <!-- /.submenu-wrapper --> 
+									</li>
 
 									<li><a href='contact.php'>FEEDBACK</a></li>
 									<li class=''><a href='logout.php'><span class='glyphicon glyphicon-log-out'> Logout </span></a></li>

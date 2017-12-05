@@ -40,7 +40,7 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imagename=$_FILES["fileToUpload"]["name"]; 
 
 //Get the content of the image and then add slashes to it 
-$imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+$imagetmp=@addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 
 $uploadOk = 1;
 $imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
@@ -49,7 +49,7 @@ $imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
 /* START OF IMAGE UPLOAD LOG*/
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    $check = @getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "The picture is a valid image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -80,86 +80,57 @@ if ($uploadOk == 0) {
 $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded succesfully.";
     }
-/* END OF IMAGE UPLOAD LOG*/
-
-/*$imagename=$_FILES["fileToUpload"]["name"]; 
-$uploadOk = 1;
-$imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
-
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}
-// Check if file already exists
-if (file_exists($imagename)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else{
-//Get the content of the image and then add slashes to it 
-$imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
-echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } */
 
 //mysql_query($insert_image);
 	$logged_by = $_POST["logged-by"];
-	$reg_number = $_POST["reg-number"];
-	$fleet_number = $_POST["fleet-number"];
-	$client_name = $_POST["client-name"];
-	$repaired_by = $_POST["repaired-by"];
-	$fault_confirmed = $_POST["radio"];
-	$fault_type = $_POST["fault-type"];
-        $type_of_damage = implode(", ",$fault_type);  
-	$date_of_log = $_POST["date-of-log"];
-	$date_of_complete = $_POST["date-of-complete"];
+	$choose_department = $_POST["choose-department"];
+	$employee_position = $_POST["employee-position"];
+        $employee_email = $_POST["employee-email"];
+        $line_manager_email = $_POST["line-manager-email"];
+        
+	$number_of_days_taken = $_POST["number-of-days-taken"];
+	$your_signature = $_POST["your-signature"];
+	$leave_type = $_POST["radio"];
+        $leave_approved_by_hr = $_POST["leave-approved-by-hr"];
+        $leave_approved_by_manager = $_POST["leave-approved-by-manager"];
+        
+        //$date_approved_by_hr = $_POST["date-approved-by-hr"];
+        //$days_owing = $_POST["days-owing"];
+        //$days_taken = $_POST["days-taken"];
+        //$days_balance = $_POST["days-balance"];
+	//$fault_type = $_POST["fault-type"];
+        //$type_of_damage = implode(", ",$fault_type);  
+	$date_of_start = $_POST["date-of-start"];
+	$date_of_end = $_POST["date-of-end"];
 	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
         
 /*START OF PHP MAIL*/
-        $to = "zama@truckassist.co.za, nastasha@truckassist.co.za, richard@truckassist.co.za, cale@truckassist.co.za, wendell@truckassist.co.za";
-        $subject = "New fault logged for $client_name";
+
+        $to = "$line_manager_email, $employee_email, v8alexander@gmail.com";
+        $subject = "New leave application form submitted by $logged_by";
 
         $message = "
         <html>
             <head>
-                <title>Fault log alert</title>
+                <title>Leave Application alert</title>
             </head>
         <body>
-        <p>A new fault has been logged for $client_name by $logged_by</p>
-        <p><a href='https://app.truckassist.co.za/faults-log-query-results.php'>Click this link to view this logged fault</a></p>
+        <p>A new leave application form has been submitted by $logged_by for dates between $date_of_start & $date_of_end</p>
+        <!--p><a href='https://app.truckassist.co.za/leave-application-query-results.php'>Click this link to view this leave request</a></p-->
         <p>
-            <b>Registration No.: </b> $reg_number <br><br>
-            <b>Fleet No.: </b> $fleet_number <br><br>
-            <b>Repaired by: </b> $repaired_by <br><br>
-            <b>Fault confirmed?: </b> $fault_confirmed <br><br>
-            <b>Type of damage: </b> $type_of_damage <br><br>
-            <b>Date fault was logged:</b> $date_of_log <br><br>
-            <b>Date repair was completed: </b> $date_of_complete <br><br>
+            <b>Employee Name: </b> $logged_by <br><br>
+            <b>Employee Department: </b> $choose_department <br><br>
+            <b>Employee's Posistion: </b> $employee_position <br><br
+            <b>Employee's E-mail: </b> $employee_email <br><br>
+            <b>Line manager's E-mail: </b> $line_manager_email <br><br>
+                
+            <b>Number of days taken: </b> $number_of_days_taken <br><br>
+            <b>Leave Type: </b> $leave_type <br><br>
+            <b>Employee's Signature: </b> $your_signature <br><br>
+            <b>Was Leave Approved By Manager:</b> $leave_approved_by_manager <br><br>
+            <b>Start date of leave: </b> $date_of_start <br><br>
+            <b>End date of leave: </b> $date_of_end <br><br>
             <b>Addidtional notes: </b> $additional_notes <br>
         </p>
         </body>
@@ -178,29 +149,37 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 
 /*END OF PHP MAIL*/
 
-	$sql = "INSERT INTO logged_faults(
+	$sql = "INSERT INTO leave_form(
             logged_by,
-			reg_number,
-			fleet_number,
-			client_name,
-			repaired_by,
-			fault_confirmed,
-			type_of_damage,
-			date_of_log,
-			date_of_complete,
-			upload_picture,
-                        upload_picture_name,
-			additional_notes)
+            choose_department,
+            employee_position,
+            employee_email,
+            line_manager_email,
+            number_of_days_taken,
+            leave_type,
+            your_signature,
+    
+            leave_approved_by_manager,
+            leave_approved_by_hr,
+            date_of_start,
+            date_of_end,
+            upload_picture,
+            upload_picture_name,
+            additional_notes)
 			VALUES(
 			'$logged_by',
-			'$reg_number',
-			'$fleet_number',
-			'$client_name',
-			'$repaired_by',
-			'$fault_confirmed',
-           	'$type_of_damage',
-			'$date_of_log',
-			'$date_of_complete',
+			'$choose_department',
+			'$employee_position',
+           	'$employee_email',
+           	'$line_manager_email',               
+			'$number_of_days_taken',
+			'$leave_type',
+			'$your_signature',
+                       
+			'$leave_approved_by_manager',
+                        '$leave_approved_by_hr',
+			'$date_of_start',
+                        '$date_of_end',
 			'$imagetmp',
                         '$imagename',
 			'$additional_notes')";
@@ -231,8 +210,8 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 								</div>
 								<ol class="breadcrumb">
 								  <li><a href="#">Home</a></li>
-								  <li><a href="#">Operations</a></li>
-								  <li class="active">Submitted Faults Log Form</li>
+								  <li><a href="#">Administration</a></li>
+								  <li class="active">Submitted Leave Application Form</li>
 								</ol>
 							</div>
 						</div><!-- /.row -->
@@ -245,38 +224,43 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 						<div class="job-page-wrapper">
 							<div class="row">
 								<div class="col-md-12">
-									<h2>Submitted Faults Log Form</h2>
+									<h2>Submitted Leave Application Form</h2>
 									<div class="job-details">
-										 <h4>
+					<h4>
                         <p>
-                        <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
-                        <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
-                        <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
+                        <a href="leave-application-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all leave applications</button></a>
+                        <a href="leave-application-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log another leave application</button></a>
+                        <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a-->
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
                         <a href="login-home.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Close</button></a>
                         </p>
-                        <p>Your form has been successfully submitted to <span style="color:red">the operations team</span></p>
                     </h4>
-        <div class="row">     	
+<br>
+
+ <div class="row">    	
+<div class="col-sm-12" style="">
+	<legend><h5>Your form has been successfully submitted to your line manager: <span style="color:red"><?php echo $line_manager_email; ?></span> and a copy emailed to you at: <span style="color:red"><?php echo $employee_email; ?></span></h5>
+</legend>
+	</div>
+</div>
+ <div class="row">    	
 <div class="col-sm-6" style="">
 <fieldset>
-<legend>Details of fault logged</legend>
+
 <p><b>Logged by:</b> <?php echo $logged_by; ?></p>
-<p><b>Client's name:</b> <?php echo $client_name; ?></p>
-<p><b>Registration <sup>no.</sup> </b> <?php echo $reg_number; ?></p>
-<p><b>Fleet <sup>no.</sup> </b> <?php echo $fleet_number; ?></p>
-<p><b>Repaired by: </b> <?php echo $repaired_by; ?></p>
-<p><b>Type of Fault: </b> <br><ul><?php foreach ($fault_type as $type_of_damage){
-                                    echo '<li>' . $type_of_damage . '</li>' . '<br/>';        
-                                }; echo "</ul>";
+<p><b>Employee's department:</b> <?php echo $choose_department; ?></p>
+<p><b>Employee's position: </b> <?php echo $employee_position; ?></p>
+<p><b>Employee's e-mail: </b> <?php echo $employee_email; ?></p>
+<p><b>Line manager's e-mail: </b> <?php echo $line_manager_email; ?></p>
+<p><b>Number of days taken: </b> <?php echo $number_of_days_taken; ?></p>
+<p><b>Has the leave been approved by your line manager: </b> <?php echo $leave_approved_by_manager; ?></p>
+<p><b>Start date of holiday: </b> <?php $date_of_start = @date("Y-m-d", strtotime($_POST["date-of-start"])); echo $date_of_start;?></p>
+<p><b>End date of holiday: </b> <?php $date_of_end = @date("Y-m-d", strtotime($_POST["date-of-end"])); echo $date_of_end;
 ?></p>
-<p><b>Date of Log: </b> <?php echo $date_of_log;?></p>
-<!--p><b>Date of Completed: </b> <?php $date_of_complete = @date("Y-m-d", strtotime($_POST["date_of_complete"])); echo $date_of_complete;
-?></p-->
 <!--p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p-->
 <p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
 <p>
-    <b>Picture Status: </b>
+    <b>Supporting Document: </b>
     <?php
     /* START OF IMAGE UPLOAD LOG*/
             // Check if image file is a actual image or fake image

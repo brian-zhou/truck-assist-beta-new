@@ -83,15 +83,14 @@ if ($_POST["g-recaptcha-response"]) {
 									<h2>Log a Fault</h2>
 									<div class="job-details">
 										<h4>
-                        <p>Log a Fault
+                        <p>
                         <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
-                        <a href="login-home.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-off"></span> Exit</button></a>
-                        
-                        
+                        <a href="login-home.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-off"></span> Exit</button></a>           
                         </p>
+                        <p>Provide as much details as possible</p>
                     </h4>
         <br>
         <div class="row">
@@ -105,7 +104,6 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>Zama</option>
                             <option>Osman</option>
                             <option>Nastasha</option>
-                            <option>Kyle</option>
                             <option>Shanaaz</option>
                             <option>Pamela</option>
                             <option>Patricia</option>
@@ -159,6 +157,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>Fox Transport</option>
                             <option>Goenberg</option>
                             <option>GP van Niekerk</option>
+                            <option>Gundle Plastics Group</option>
                             <option>Grain Carriers South Africa</option>
                             <option>Grain Carriers Namibia</option>
                             <option>Groenberg Cartage</option>
@@ -192,6 +191,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>Themba Transport</option>
                             <option>Thido Carriers Trust</option>
                             <option>Top Crop</option>
+                            <option>TSU</option>
                             <option>VDM Vervoer</option>
                             <option>Virgo</option>
                             <option>M & A</option>
@@ -268,10 +268,10 @@ if ($_POST["g-recaptcha-response"]) {
             </div>
 
             <div class="col-sm-4">
-                <marquee><h5 style="color: green"><?php echo "Today is " . @date("d-m-Y")?> </h5></marquee>
+             
                 <div class="form-group">
                     <label for="date">Date Logged: &nbsp;&ensp;&ensp;</label>
-                    <input type="date" name="date-of-log">
+                    <input type="text" name="date-of-log" value="<?php echo date('d-m-Y')?>">
                 </div>
 
                 <div class="form-group">

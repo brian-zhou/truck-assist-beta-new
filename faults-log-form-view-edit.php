@@ -232,7 +232,7 @@ foreach ($button_id as $selected_user_id) {
                             <option>YES</option>
                             <option>NO</option>
                         </select>
-                    </div>
+             </div>
             <hr>
         </div>
         <hr>

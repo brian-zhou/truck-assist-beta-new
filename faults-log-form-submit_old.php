@@ -248,16 +248,17 @@ echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploade
 									<h2>Submitted Faults Log Form</h2>
 									<div class="job-details">
 										 <h4>
-                        <p>
+                        <p>Your form has been successfully submitted to <span style="color:red">the operations team</span>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
                         <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
                         <a href="login-home.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Close</button></a>
                         </p>
-                        <p>Your form has been successfully submitted to <span style="color:red">the operations team</span></p>
                     </h4>
-        <div class="row">     	
+<br>
+        <div class="row">
+        	
 <div class="col-sm-6" style="">
 <fieldset>
 <legend>Details of fault logged</legend>
