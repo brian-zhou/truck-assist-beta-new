@@ -108,18 +108,18 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>Nastasha Rex</option>
                             <option>Richard Homu</option>
                             <option>Shanaaz</option>
-                            <option>Pamela</option>
+                            <option>Pamela C Kapfumvuti</option>
                             <option>Patricia</option>
-                            <option>Elizabeth</option>
+                            <option>Elizabeth Selemani</option>
                             <option>Warrick Braaf</option>
                             <option>Jason</option>
                             <option>Cale Torino</option>
                             <option>Wendell Barry</option>
                             <option>Bronwynne Jordaan</option>
-                            <option>Servious</option>
+                            <option>Servious Shumba</option>
                             <option>Riyaz</option>
-                            <option>Marius</option>
-                            <option>Shari</option>
+                            <option>Marius Killian</option>
+                            <option>Sharidine Denste</option>
                             <option>Magda</option>
                             <option>Rudo Zembe</option>
                             <option>Brian Zhou</option>
@@ -143,6 +143,8 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>Installations</option>
                             <option>Technical/QA</option>
                             <option>Office Maintenance</option>
+                            <option>Faults</option>
+                            <option>Video Investigations</option>
                         </select>
                     </div>
                     
@@ -318,7 +320,7 @@ if ($_POST["g-recaptcha-response"]) {
 
                 <br>
                     
-                    <!--div class="form-group">
+                    <div class="form-group">
                         <label for="days-owing"> <sup>no </sup> of days owing</label>
                         <input type="text" class="form-control" name="days-owing" readonly>
                     </div>
@@ -331,7 +333,7 @@ if ($_POST["g-recaptcha-response"]) {
                     <div class="form-group">
                         <label for="days-balance"> <sup>no </sup> of days (balance) owing</label>
                         <input type="text" class="form-control" name="days-balance" readonly>
-                    </div-->
+                    </div>
               
                 <br>
            
