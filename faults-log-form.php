@@ -101,7 +101,7 @@ if ($_POST["g-recaptcha-response"]) {
                     <div class="form-group">
                         <label for="sel1">Logged by (Operator's name):</label>
                         <select class="form-control" id="logged-by" name="logged-by">
-                            <option>Zama</option>
+                            <option>Chelsea</option>
                             <option>Osman</option>
                             <option>Nastasha</option>
                             <option>Shanaaz</option>
@@ -183,6 +183,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>RB & Sons</option>
                             <option>RMG Trucking</option>
                             <option>RPH</option>
+                            <option>Salvador Properties</option>
                             <option>Silver Meadow</option>
                             <option>Siyabonwa</option>
                             <option>Sumeil Transport</option>

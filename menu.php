@@ -75,8 +75,8 @@
 											<div class='submenu-inner  submenu-inner-topbottom'>
 												<ul class='dropdown-menu'>
                                                                                                 
-													<li><a href='leave-application-form.php'>Leave Application Form</a></li>
-                                                                                                        <li><a href='leave-application-query-results.php'>View all submitted leave requests</a></li>
+													<li><a href='leave-application-form-employee.php'>Leave Application Form</a></li>
+                                                                                                        <li><a href='leave-application-status-employee.php'>View all submitted leave requests</a></li>
 												</ul>
 											</div><!-- /.submenu-inner -->
 										</div> <!-- /.submenu-wrapper --> 

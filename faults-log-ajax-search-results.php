@@ -119,6 +119,9 @@ if (mysqli_num_rows($result)>0){
         //echo "<th>Picture Upload</th>";
         echo "<th>Uploaded Picture Name</th>";
         echo "<th>Addtional Notes</th>";
+        
+        echo "<th>Resolution Notes</th>";
+        echo "<th>Fault resolved?</th>";
         echo "<th>View/Edit Record</th>";
         echo "<br>";
         echo "<br>";
@@ -147,6 +150,9 @@ if (mysqli_num_rows($result)>0){
                 //echo "<td>" . $row["upload_picture"] . "</td>";
                 echo "<td>" . $row["upload_picture_name"] . "</td>";
                 echo "<td>" . $row["additional_notes"] . "</td>";
+                 
+                echo "<td>" . $row["resolution_notes"] . "</td>";
+                echo "<td>" . $row["log_resolved"] . "</td>";
                 echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
                 }
                 echo "</form>";

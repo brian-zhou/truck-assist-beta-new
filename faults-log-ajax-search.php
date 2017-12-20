@@ -99,7 +99,8 @@ include('include/connection.php');
                         <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
                         <a href="faults-log-query-results.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
-                        <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
+                        <!--a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a-->
+                        <a href="faults-log-query-unresolved-results.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Unresolved Faults</button></a>
                     </p>
                 </h4>
                 <form> 

@@ -85,14 +85,13 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 	$logged_by = $_POST["logged-by"];
 	$choose_department = $_POST["choose-department"];
 	$employee_position = $_POST["employee-position"];
-        $employee_email = $_POST["employee-email"];
-        $line_manager_email = $_POST["line-manager-email"];
-        
+    $employee_email = $_POST["employee-email"];
+    $line_manager_email = $_POST["line-manager-email"];  
 	$number_of_days_taken = $_POST["number-of-days-taken"];
 	$your_signature = $_POST["your-signature"];
 	$leave_type = $_POST["radio"];
-        $leave_approved_by_hr = $_POST["leave-approved-by-hr"];
-        $leave_approved_by_manager = $_POST["leave-approved-by-manager"];
+    $leave_approved_by_hr = $_POST["leave-approved-by-hr"];
+    $leave_approved_by_manager = $_POST["leave-approved-by-manager"];
         
         //$date_approved_by_hr = $_POST["date-approved-by-hr"];
         //$days_owing = $_POST["days-owing"];
@@ -105,9 +104,10 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 	//$upload_picture = $_POST["fileToUpload"];
 	$additional_notes = $_POST["additional-notes"];
         
-/*START OF PHP MAIL*/
+/*START OF PHP E-MAIL 1*/
 
-        $to = "$line_manager_email, $employee_email, v8alexander@gmail.com";
+        $to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za";
+        $to = "brian@truckassist.co.za";
         $subject = "New leave application form submitted by $logged_by";
 
         $message = "
@@ -117,7 +117,7 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             </head>
         <body>
         <p>A new leave application form has been submitted by $logged_by for dates between $date_of_start & $date_of_end</p>
-        <!--p><a href='https://app.truckassist.co.za/leave-application-query-results.php'>Click this link to view this leave request</a></p-->
+        <p><a href='https://app.truckassist.co.za/leave-application-status.php'>Click this link to view the status of your leave request</a></p>
         <p>
             <b>Employee Name: </b> $logged_by <br><br>
             <b>Employee Department: </b> $choose_department <br><br>
@@ -142,12 +142,56 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
         // More headers
-        $headers .= 'From: <info@truckassist.co.za>' . "\r\n";
+        $headers .= 'From: <support@truckassist.co.za>' . "\r\n";
         $headers .= 'Cc: brian@truckassist.co.za' . "\r\n";
 
         mail($to,$subject,$message,$headers);
 
-/*END OF PHP MAIL*/
+/*END OF PHP E-MAIL 1*/
+        
+/*START OF PHP E-MAIL 2*/
+
+        //$to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za";
+        $to = "brian@truckassist.co.za";
+        $subject = "New leave application form submitted by $logged_by";
+
+        $message = "
+        <html>
+            <head>
+                <title>Leave Application alert</title>
+            </head>
+        <body>
+        <p>A new leave application form has been submitted by $logged_by for dates between $date_of_start & $date_of_end</p>
+        <p><a href='https://app.truckassist.co.za/leave-application-decision.php'>Click this link to view/approve/decline this leave request</a></p>
+        <p>
+            <b>Employee Name: </b> $logged_by <br><br>
+            <b>Employee Department: </b> $choose_department <br><br>
+            <b>Employee's Posistion: </b> $employee_position <br><br
+            <b>Employee's E-mail: </b> $employee_email <br><br>
+            <b>Line manager's E-mail: </b> $line_manager_email <br><br> 
+            <b>Number of days taken: </b> $number_of_days_taken <br><br>
+            <b>Leave Type: </b> $leave_type <br><br>
+            <b>Employee's Signature: </b> $your_signature <br><br>
+            <b>Was Leave Approved By Manager:</b> $leave_approved_by_manager <br><br>
+            <b>Start date of leave: </b> $date_of_start <br><br>
+            <b>End date of leave: </b> $date_of_end <br><br>
+            <b>Addidtional notes: </b> $additional_notes <br>
+        </p>
+        </body>
+        </html>
+        ";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        $headers .= 'From: <support@truckassist.co.za>' . "\r\n";
+        $headers .= 'Cc: brian@truckassist.co.za' . "\r\n";
+
+        mail($to,$subject,$message,$headers);
+
+/*END OF PHP E-MAIL 2*/
 
 	$sql = "INSERT INTO leave_form(
             logged_by,
@@ -158,7 +202,6 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             number_of_days_taken,
             leave_type,
             your_signature,
-    
             leave_approved_by_manager,
             leave_approved_by_hr,
             date_of_start,
@@ -170,14 +213,13 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 			'$logged_by',
 			'$choose_department',
 			'$employee_position',
-           	'$employee_email',
-           	'$line_manager_email',               
+                        '$employee_email',
+                        '$line_manager_email',               
 			'$number_of_days_taken',
 			'$leave_type',
 			'$your_signature',
-                       
 			'$leave_approved_by_manager',
-                        '$leave_approved_by_hr',
+                        'PENDING',
 			'$date_of_start',
                         '$date_of_end',
 			'$imagetmp',
@@ -228,8 +270,8 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 									<div class="job-details">
 					<h4>
                         <p>
-                        <a href="leave-application-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all leave applications</button></a>
-                        <a href="leave-application-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log another leave application</button></a>
+                        <a href="leave-application-status-employee.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all leave applications</button></a>
+                        <a href="leave-application-form-employee.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log another leave application</button></a>
                         <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a-->
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
                         <a href="login-home.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Close</button></a>

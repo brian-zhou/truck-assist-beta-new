@@ -87,8 +87,10 @@ if ($_POST["g-recaptcha-response"]) {
                         <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a-->
-                        <a href="leave-application-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View Leave Status</button></a>
+                        <a href="leave-application-status-employee.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View Leave Status</button></a>
                         <a href="login-home.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-off"></span> Exit</button></a>
+
+                        
                         <p><marquee><h4 style="color: maroon"><?php echo "Today is " . @date("d-m-Y")?> </h4></marquee></p>
                         
                         </p>
@@ -103,24 +105,22 @@ if ($_POST["g-recaptcha-response"]) {
                         <label for="logged-by">Choose your name:</label>
                         <select class="form-control" id="logged-by" name="logged-by">
                             <option>Debi Smit</option>
-                            <option>Zama Ngumbi</option>
+                            <option>Chelsea Stopforth</option>
                             <option>Osman Selemani</option>
                             <option>Nastasha Rex</option>
                             <option>Richard Homu</option>
-                            <option>Shanaaz</option>
+                            <option>Shanaaz Daniels</option>
                             <option>Pamela C Kapfumvuti</option>
-                            <option>Patricia</option>
+                            <option>Patricia Mpohla</option>
                             <option>Elizabeth Selemani</option>
                             <option>Warrick Braaf</option>
-                            <option>Jason</option>
                             <option>Cale Torino</option>
                             <option>Wendell Barry</option>
                             <option>Bronwynne Jordaan</option>
                             <option>Servious Shumba</option>
-                            <option>Riyaz</option>
+                            <option>Riyaaz Fredericks</option>
                             <option>Marius Killian</option>
-                            <option>Sharidine Denste</option>
-                            <option>Magda</option>
+                            <option>Sharidine Danster</option> 
                             <option>Rudo Zembe</option>
                             <option>Brian Zhou</option>
                             <option>Stanley K Chiwara</option>
@@ -221,15 +221,15 @@ if ($_POST["g-recaptcha-response"]) {
 
                
                 
-                <div class="form-group">
+                <!--div class="form-group">
                         <label for="leave-approved">Has this leave been approved by your manager?</label>
                         <select class="form-control" id="leave-approved-by-manager" name="leave-approved-by-manager">
                             <option>YES</option>
                             <option>NO</option>
                         </select>
-                </div>
+                </div-->
                 
-                <br>
+           
                 <div id="leave-type">
                 
                  <label for="leave-type">I wish to apply for leave as follows:</label>
@@ -289,7 +289,7 @@ if ($_POST["g-recaptcha-response"]) {
                 <!-- start of file upload process-->
                 
               
-                    <label for="upload-picture">Supporting documentation (e.g. medical certificate):</label>
+                    <label for="upload-picture">Supporting documentation (e.g. medical certificate, exam schedule etc.):</label>
                     <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
                     <!--p><input type="submit" value="Upload Image" name="submit"></p-->
               
@@ -309,16 +309,19 @@ if ($_POST["g-recaptcha-response"]) {
                     <input type="date" name="date-approved-by-hr" readonly >
                 </div-->
                 
-                <div class="form-group">
+                <!--div class="form-group">
                         <label for="leave-approved">Leave has been approved by HR</label>
                         <select class="form-control" id="leave-approved" name="leave-approved-by-hr" readonly>
                             <option>PENDING</option>
                             <option>YES</option>
                             <option>NO</option>
                         </select>
+                </div-->
+                
+                <div class="form-group">
+                        <label for="leave-approval"> <sup>no </sup> of days owing</label>
+                        <input type="text" class="form-control" name="leave-approved-by-hr" readonly>
                 </div>
-
-                <br>
                     
                     <div class="form-group">
                         <label for="days-owing"> <sup>no </sup> of days owing</label>

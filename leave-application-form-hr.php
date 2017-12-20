@@ -1,9 +1,7 @@
-<?PHP
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,15 +28,24 @@ session_start();
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/modal.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="css/responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/truck-2.ico">
     <script src="js/vendor/modernizr-2.8.1.min.js"></script>
-  
-	</head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<?php
 
 
+// if submitted check response
+if ($_POST["g-recaptcha-response"]) {
+    $response = $reCaptcha->verifyResponse(
+        $_SERVER["REMOTE_ADDR"],
+        $_POST["g-recaptcha-response"]
+    );
+}
+?>
 	<body>
 	  <div id="st-container" class="st-container">
 	    <div class="st-pusher">
@@ -46,9 +53,9 @@ session_start();
 	        <div class="st-content-inner">
 			    <!-- start of main menu-->
                                <div class="menu">
-                                   <?php include 'menu.php';?>
+                <?php include 'menu.php';?>
                                </div>
-                   <!-- end of main menu-->
+                   <!-- end of main menu--> 
 
 				<section class="page-header-wrapper">
 					<div class="container">
@@ -58,9 +65,9 @@ session_start();
 								  <h1>Operations</h1>
 								</div>
 								<ol class="breadcrumb">
-								  <li><a href="">Home</a></li>
-								  <li><a href="">Operations</a></li>
-								  <li class="active">View/Edit Fault Log</li>
+								  <li><a href="#">Home</a></li>
+								  <li><a href="#">Administration</a></li>
+								  <li class="active">Leave Form</li>
 								</ol>
 							</div>
 						</div><!-- /.row -->
@@ -73,131 +80,101 @@ session_start();
 						<div class="job-page-wrapper">
 							<div class="row">
 								<div class="col-md-12">
-									<h2>View/Edit Fault Log</h2>
+									<h3>Leave Application Form</h3>
 									<div class="job-details">
-<?php
-include('include/connection.php');
+										<h4>
+                        <p>
+                        <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
+                        <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
+                        <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a-->
+                        <a href="leave-application-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View Leave Status</button></a>
+                        <a href="login-home.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-off"></span> Exit</button></a>
+                        <p><marquee><h4 style="color: maroon"><?php echo "Today is " . @date("d-m-Y")?> </h4></marquee></p>
+                        
+                        </p>
+                    </h4>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
 
-@header("content-type:image/jpeg");
-$button_id = $_POST['button_id'];
+                <form action="leave-application-form-submit.php" method="post" enctype="multipart/form-data">
+                    
+                    <div class="form-group">
+                        <label for="logged-by">Employee Name<sup></sup></label>
+                        <input type="text" class="form-control" name="logged-by" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="choose-department">Employee Department<sup></sup></label>
+                        <input type="text" class="form-control" name="choose-department" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="line-manager-email">Employee manager's e-mail<sup></sup></label>
+                        <input type="text" class="form-control" name="line-manager-email" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-position">Position<sup></sup></label>
+                        <input type="text" class="form-control" name="employee-position" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-email">Your Truck Assist e-mail<sup></sup></label>
+                        <input type="text" class="form-control" name="employee-email" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-email">Number of days taken<sup></sup></label>
+                        <input type="text" class="form-control" name="employee-email" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="your-signature">Your Signature <sup>initials only</sup></label>
+                        <input type="text" class="form-control" name="your-signature" readonly>
+                    </div>
 
-foreach ($button_id as $selected_user_id) {
-	//echo $selected_user_id . "<br>";
-
- 	$sql = "SELECT * FROM logged_faults WHERE id = $selected_user_id";
- 	$result = mysqli_query($conn, $sql);
-
- 	while($row = mysqli_fetch_assoc($result)){
-                $id = $row["id"];
-                //echo "$id . 'IS ID'";
- 		$logged_by = $row["logged_by"];
-                $reg_number = $row["reg_number"]; 
-                $fleet_number = $row["fleet_number"];
-                $client_name = $row["client_name"];
-                $repaired_by = $row["repaired_by"];
-                $fault_confirmed = $row["fault_confirmed"];
-                $type_of_damage = $row["type_of_damage"]; 
-                $date_of_log = $row["date_of_log"];
-                $date_of_complete = $row["date_of_complete"]; 
-                $upload_picture = $row["upload_picture"];
-                $additional_notes = $row["additional_notes"];            
- 			} 
-    }
-?>
-    <br>
-    <h4>
-            <p>
-                Update this <span style="color: red;"><?php echo $client_name; ?></span>'s fault log entry logged by <span style="color: red;"><?php echo $logged_by; ?></span>
-         
-            	<a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
-                <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
-                <a href="faults-log-query-results.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
-                <a href="login-home.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Exit</button></a>
-            </p>
-        </h4>
-    <br>
-    <div class="row">
-        <div class="col-sm-4">
-            <form action="faults-log-form-update.php" method="post">
-            <!--form action="faults-log-query-results.php" method="post"-->
-                <!--form action="mail_handler.php" method="post"-->
-
-                <div class="form-group">
-                    <label for="reg-number">Logged by:</label>
-                    <input type="text" class="form-control" name="logged-by" value="<?php echo $logged_by; ?>" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="reg-number">Registration <sup>no. </sup></label>
-                    <input type="text" class="form-control" name="reg-number" value="<?php echo $reg_number; ?>" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="fleet-number">Fleet <sup>no.</sup></label>
-                    <input type="text" class="form-control" name="fleet-number" value="<?php echo $fleet_number; ?>" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="client-number">Client's Name:</label>
-                    <input type="text" class="form-control" name="client-name" value="<?php echo $client_name; ?>" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="repaired-by">Repaired by:</label>
-                    <input type="text" class="form-control" name="repaired-by" value="<?php echo $repaired_by; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="fault-type">Type of fault:</label>
-                    <input type="text" class="form-control" name="fault-type" value="<?php echo $type_of_damage; ?>" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="Additional-notes">Additional Notes of Fault:</label>
-                    <input type="text" class="form-control" name="additional-notes" value="<?php echo $additional_notes; ?>" readonly>
-                </div>
-
-        </div>
-
-        <div class="col-sm-4">
-            <label for="fault-confirmed">Fault Confirmed</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="radio" value="Yes">Yes</label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="radio" value="No" checked="checked">No</label>
-            </div>
-            <hr>
-            <br>
-            
-            <div class="form-group">
-                <label for="date">Date Logged: &nbsp;&ensp;&ensp;</label>
-                <input type="date" name="date-of-log" value="<?php echo $date_of_log;?>" readonly>
+                  
             </div>
 
-            <div class="form-group">
-                <label for="date">Date Completed:</label>
-                <input type="date" name="date-of-complete" value="<?php echo $date_of_complete; ?>">
-            </div>  
-            
-            <br>
-            <hr>
+            <div class="col-sm-4">
 
-            <!-- The Modal -->
+               
+                    <div class="form-group">
+                        <label for="leave-type">Type of leave applied for<sup></sup></label>
+                        <input type="text" class="form-control" name="leave-type" readonly>
+                    </div> 
+                <br>
+                
+                  <div class="form-group">
+                    <label for="date">Start date: &nbsp;&ensp;&ensp;</label>
+                    <input type="date" name="date-of-start" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">End Date: &nbsp;&ensp;&ensp;&ensp;</label>
+                    <input type="date" name="date-of-end" readonly>
+                </div>
+
+                <br>
+
+                    <label for="upload-picture">Supporting documentation (e.g. medical certificate:</label>
+                    <p><input type="file" name="fileToUpload" id="fileToUpload" readonly></p>
+                    <!--p><input type="submit" value="Upload Image" name="submit"></p-->
+           
+                <br>
+
+                
+                            <!-- The Modal -->
 			<div id="myModal" class="modal">
 				  <span class="close">&times;</span>
 				  	<img class="modal-content" id="img01">
 				  <div id="caption"></div>
 			</div>
 
-          
-            <label for="upload-picture"><marquee direction = "up">Click on image to expand it</label>  </marquee>  
-         
-                <p><?php echo '<img id="myImg" src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p> 
+            <p><?php echo '<img id="myImg" src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p> 
             <br>
-            <h5><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download the picture</a></p> </h5>
+            <h5><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download supporting documentation (if any) e.g. medical certificate, exam schedule etc.</a></p> </h5>
 
  <!-- Start of the Modal Javascript -->
 			<script>
@@ -224,39 +201,66 @@ foreach ($button_id as $selected_user_id) {
 			</script>
 <!-- End of the Modal Javascript -->
 
-        </div>
+            </div>
 
-        <div class="col-sm-4">
-            <div class="form-group">
-                        <label for="sel1">Fault has been resolved</label>
-                        <select class="form-control" id="log-resolved" name="log-resolved">
+            <div class="col-sm-4" style="background-color: beige;">
+                
+                <label for="for-official-use-only"><b>For office use only:</b></label>
+                <!--div class="form-group">
+                    <label for="date">Date Approved: &nbsp;&ensp;&ensp;&nbsp;&ensp;&ensp;&nbsp;&ensp;&ensp;&nbsp;&ensp;</label>
+                    <input type="date" name="date-approved-by-hr" readonly >
+                </div-->
+                
+                <div class="form-group">
+                        <label for="leave-approved">Leave has been approved by HR</label>
+                        <select class="form-control" id="leave-approved" name="leave-approved-by-hr">
+                            <option>PENDING</option>
                             <option>YES</option>
                             <option>NO</option>
                         </select>
-             </div>
-            <hr>
-        </div>
-        <hr>
-        <div class="col-sm-4">
-            <div class="form-group">
-                    <label for="Resolution-notes">Resolution Notes:</label>
-                    <input type="text" class="form-control" name="resolution-notes" value="Add resolution description here">
                 </div>
+                
+                <div class="form-group">
+                    <label for="hr-comments">Comments:</label>
+                    <textarea class="form-control" rows="3" id="" name="hr-comments" ></textarea>
+                </div>
+
+                <br>
+                    
+                    <div class="form-group">
+                        <label for="days-owing"> <sup>no </sup> of days owing</label>
+                        <input type="text" class="form-control" name="days-owing">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="days-taken"> <sup>no </sup> of leave days taken (on this application)</label>
+                        <input type="text" class="form-control" name="days-taken">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="days-balance"> <sup>no </sup> of days (balance) owing</label>
+                        <input type="text" class="form-control" name="days-balance">
+                    </div>
+              
+                <br>
+           
+            </div>
+
         </div>
-        
+
         <hr>
-    	<input type="submit" class="btn btn-success" name="button_id" value="<?php echo $id; ?>" style="margin-bottom: 40px;">
-    </form>
-    </div>
-<?php             
-mysqli_close($conn);
-?>								
+        
+        <input type="submit" name="submit" class="btn btn-success" value = "Send to <?php echo $logged_by;?>" style="margin-bottom: 40px;">
+        </form>
+            
+										
 									</div>
 								</div>
 							</div>
 						</div><!-- /.job-page-wrapper -->
 					</div><!-- /.content-wrapper -->
 				</div><!-- /.container -->
+
 
 				<section class="footer-widget-wrapper">
 					<div class="container">
@@ -339,6 +343,7 @@ mysqli_close($conn);
                     <?php include 'menu-offcanvas.php';?>
                 </div>
         <!-- ======== END OFFCANVAS MENU ========= -->
+        
 	 </div><!-- /st-container -->
 
 

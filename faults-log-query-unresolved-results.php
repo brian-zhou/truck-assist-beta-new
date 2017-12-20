@@ -38,11 +38,11 @@ session_start();
     <style>
 
     table{ 
-        width: 100% !important;
+        width: 70% !important;
         }
         
     table,th {
-            width: 100%;
+            width: 10%;
         }
 
     </style>
@@ -65,12 +65,12 @@ session_start();
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="page-header">
-                                  <h2>Administration</h2>
+                                  <h1>Operations</h1>
                                 </div>
                                 <ol class="breadcrumb">
                                   <li><a href="#">Home</a></li>
-                                  <li><a href="#">Admin</a></li>
-                                  <li class="active">All requested leave</li>
+                                  <li><a href="#">Operations</a></li>
+                                  <li class="active">All Logged Faults</li>
                                 </ol>
                             </div>
                         </div><!-- /.row -->
@@ -81,16 +81,14 @@ session_start();
                 <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h3>List of all leave requests</h3>
+                                    <h2>List of all logged faults</h2>
                                     <h4>
                                 
-                                        <a href="leave-application-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Complete a new leave application form</button></a>
-                                        
+                                        <a href="faults-log-form.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log a fault</button></a>
                                         <a href="csv-mysql-test.php"><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-export"></span> Export CSV</button></a>
-                                        
-                                        
-                                        <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a-->
-                                        
+                                        <a href="faults-log-query-results.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> View all faults</button></a>
+                                        <a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
+                                        <a href="faults-log-report.php"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a>
                                         </p>
                                     </h4> 
                                 </div>
@@ -98,35 +96,33 @@ session_start();
 
                             <div class="row">
 
-<div class="col-md-12" style="margin-left: 0%">                      
+<div class="col-md-12" style="margin-left: -21%">                      
 <?php
 include('include/connection.php');
 
-    $sql = "SELECT * FROM leave_form ORDER BY `id` DESC";
+    //$sql = "SELECT * FROM logged_faults ORDER BY `id` DESC";
+    //$sql = "SELECT * FROM logged_faults ORDER BY `id` DESC";
+    $sql = "SELECT * FROM logged_faults WHERE log_resolved != 'YES' ORDER BY `id`, client_name DESC";
     $result = mysqli_query($conn, $sql);
 
-    echo "<form method = 'POST' action = ''>";
+    echo "<form method = 'POST' action = 'faults-log-form-view-edit.php'>";
     if (mysqli_num_rows($result)>0){
         echo "<table class='table table-hover table table-bordered' >";
         echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>Time Stamp</th>";
-        echo "<th>Employee's Name</th>";
-        echo "<th>Department</th>";
-        echo "<th>E-mail</th>";
-        echo "<th>Number of days taken</th>";
-        echo "<th>Leave Type</th>";
-        echo "<th>Was Leave Approved By Manager</th>";
-       // echo "<th>Was Leave Approved By HR</th>";
-        echo "<th>Start date of leave</th>";
-        echo "<th>End date of leave</th>";
-        echo "<th>Supporting Document</th>";
-        echo "<th>Motivation</th>";
-        echo "<th>Status of Request</th>";
-        //echo "<th>HR Comments</th>";
-        //echo "<th>N<sup>o</sup> of days owing</th>";
-        //echo "<th>N<sup>o</sup> of leave days taken</th>";
-        //echo "<th>N<sup>o</sup> of days owing (balance)</th>";
+        echo "<th>Logged By</th>";
+        echo "<th>Registration No.</th>";
+        echo "<th>Fleet No.</th>";
+        echo "<th>Client's Name</th>";
+        echo "<th>Repaired By</th>";
+        echo "<th>Fault Confirmed</th>";
+        echo "<th>Fault Type</th>";
+        echo "<th>Date Logged</th>";
+        echo "<th>Date Resolved</th>";
+        echo "<th>Uploaded Image Name</th>";
+        echo "<th>Addtional Notes</th>";
+        echo "<th>Fault resolved?</th>";
+        echo "<th>Resolution Notes</th>";
+        echo "<th>View/Edit Record</th>";
         echo "<br>";
         echo "<br>";
         
@@ -141,32 +137,21 @@ include('include/connection.php');
                 echo "<tr bgcolor='cde5ef'>";
             }
             $i++;
-                echo "<td>" . $row["id"] . "</td>";
-                echo "<td>" . $row["time_stamp"] . "</td>";
                 echo "<td>" . $row["logged_by"] . "</td>";
-                echo "<td>" . $row["choose_department"] . "</td>"; 
-                echo "<td>" . $row["employee_email"] . "</td>";
-                echo "<td>" . $row["number_of_days_taken"] . "</td>";
-                //echo "<td>" . $row["fault_type"] . "</td>";
-                echo "<td>" . $row["leave_type"] . "</td>";
-                echo "<td>" . $row["leave_approved_by_manager"] . "</td>";
-                
-                echo "<td>" . $row["date_of_start"] . "</td>";
-                echo "<td>" . $row["date_of_end"] . "</td>"; 
+                echo "<td>" . $row["reg_number"] . "</td>"; 
+                echo "<td>" . $row["fleet_number"] . "</td>";
+                echo "<td>" . $row["client_name"] . "</td>";
+                echo "<td>" . $row["repaired_by"] . "</td>";
+                echo "<td>" . $row["fault_confirmed"] . "</td>";
+                echo "<td>" . $row["type_of_damage"] . "</td>"; 
+                echo "<td>" . $row["date_of_log"] . "</td>";
+                echo "<td>" . $row["date_of_complete"] . "</td>"; 
                 echo "<td>" . $row["upload_picture_name"] . "</td>";
                 echo "<td>" . $row["additional_notes"] . "</td>";
-                echo "<td>" . $row["leave_approved_by_hr"] . "</td>";
-                //echo "<td>" . $row["hr_comments"] . "</td>"; 
-               // echo "<td>" . $row["your_signature"] . "</td>";
-                 
+                echo "<td>" . $row["log_resolved"] . "</td>"; 
+                echo "<td>" . $row["resolution_notes"] . "</td>";
                 
-               
-                
-                //echo "<td>" . $row["no_of_days_owing"] . "</td>";
-                //echo "<td>" . $row["no_of_leave_days_taken"] . "</td>";
-                //echo "<td>" . $row["no_of_days_balance"] . "</td>";
-                
-                //echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
+                echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
              }
                 echo "</form>";
             }
