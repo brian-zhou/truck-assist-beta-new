@@ -101,6 +101,7 @@ echo $hint === "" ? "No suggestions, check your spelling..." : $hint;
 include('include/connection.php');
 
 $sql = "SELECT * FROM logged_faults WHERE client_name LIKE '".$q."%' ORDER BY `id` DESC";
+//$sql = "SELECT * FROM logged_faults WHERE client_name LIKE '".$q."%' AND client_name LIKE '".$q."%' ORDER BY `id` DESC";
 $result = mysqli_query($conn, $sql);
 
 echo "<form method = 'POST' action = 'faults-log-form-view-edit.php'>";

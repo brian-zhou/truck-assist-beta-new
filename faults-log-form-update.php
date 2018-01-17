@@ -38,7 +38,6 @@
 	include('include/connection.php');
 	$button_id = $_POST['button_id'];
 	//echo $button_id;
-
 	$logged_by = $_POST["logged-by"];
 	$reg_number = $_POST["reg-number"];
 	$fleet_number = $_POST["fleet-number"];

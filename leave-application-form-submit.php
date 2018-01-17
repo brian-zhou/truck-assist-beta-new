@@ -35,20 +35,21 @@
 <?php
 include('include/connection.php');
 
-$target_dir = "uploads/";
+/*$target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$imagename=$_FILES["fileToUpload"]["name"]; 
+$imagename=$_FILES["fileToUpload"]["name"]; */
 
 //Get the content of the image and then add slashes to it 
-$imagetmp=@addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+/*$imagetmp=@addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 
 $uploadOk = 1;
-$imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);
+$imageFileType = pathinfo($imagename,PATHINFO_EXTENSION);*/
 //echo $imageFileType;
+
 
 /* START OF IMAGE UPLOAD LOG*/
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
+/*if(isset($_POST["submit"])) {
     $check = @getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "The picture is a valid image - " . $check["mime"] . ".";
@@ -57,22 +58,22 @@ if(isset($_POST["submit"])) {
         echo "The picture is not a valid image.";
         $uploadOk = 0;
     }
-}
+}*/
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+/*if ($_FILES["fileToUpload"]["size"] > 500000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
-}
+}*/
 
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+/*if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
-}
+}*/
 
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
+/*if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else{
@@ -80,23 +81,25 @@ if ($uploadOk == 0) {
 $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
 echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded succesfully.";
     }
-
-//mysql_query($insert_image);
+   */ 
+/* END OF IMAGE UPLOAD LOG*/
+   
 	$logged_by = $_POST["logged-by"];
 	$choose_department = $_POST["choose-department"];
 	$employee_position = $_POST["employee-position"];
-    $employee_email = $_POST["employee-email"];
-    $line_manager_email = $_POST["line-manager-email"];  
+        $employee_email = $_POST["employee-email"];
+        $line_manager_email = $_POST["line-manager-email"];  
 	$number_of_days_taken = $_POST["number-of-days-taken"];
 	$your_signature = $_POST["your-signature"];
-	$leave_type = $_POST["radio"];
-    $leave_approved_by_hr = $_POST["leave-approved-by-hr"];
-    $leave_approved_by_manager = $_POST["leave-approved-by-manager"];
+	//$leave_type = $_POST["radio"];
+        $leave_approved_by_hr = $_POST["leave-approved-by-hr"];
+        //$leave_approved_by_manager = $_POST["leave-approved-by-manager"];
         
         //$date_approved_by_hr = $_POST["date-approved-by-hr"];
-        //$days_owing = $_POST["days-owing"];
-        //$days_taken = $_POST["days-taken"];
-        //$days_balance = $_POST["days-balance"];
+        $days_owing = $_POST["days-owing"];
+        $days_taken = $_POST["days-taken"];
+        $days_balance = $_POST["days-balance"];
+        $leave_type = $_POST["radio"];
 	//$fault_type = $_POST["fault-type"];
         //$type_of_damage = implode(", ",$fault_type);  
 	$date_of_start = $_POST["date-of-start"];
@@ -106,8 +109,8 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
         
 /*START OF PHP E-MAIL 1*/
 
-        $to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za";
-        $to = "brian@truckassist.co.za";
+        //$to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za, debi@truckassist.co.za ";
+        $to = "$employee_email, $line_manager_email";
         $subject = "New leave application form submitted by $logged_by";
 
         $message = "
@@ -117,18 +120,20 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             </head>
         <body>
         <p>A new leave application form has been submitted by $logged_by for dates between $date_of_start & $date_of_end</p>
-        <p><a href='https://app.truckassist.co.za/leave-application-status.php'>Click this link to view the status of your leave request</a></p>
+        <p><a href='https://app.truckassist.co.za/leave-application-status-employee.php'>Click this link to view the status of your leave request</a></p>
         <p>
             <b>Employee Name: </b> $logged_by <br><br>
             <b>Employee Department: </b> $choose_department <br><br>
             <b>Employee's Posistion: </b> $employee_position <br><br
             <b>Employee's E-mail: </b> $employee_email <br><br>
             <b>Line manager's E-mail: </b> $line_manager_email <br><br>
-                
             <b>Number of days taken: </b> $number_of_days_taken <br><br>
             <b>Leave Type: </b> $leave_type <br><br>
             <b>Employee's Signature: </b> $your_signature <br><br>
-            <b>Was Leave Approved By Manager:</b> $leave_approved_by_manager <br><br>
+            <b>Was Leave Approved By HR:</b> Not yet! <br><br>
+            <b>Days Owing:</b> $days_owing <br><br>
+            <b>Days Taken:</b> $days_taken <br><br>
+            <b>Days Balance:</b> $days_balance <br><br>
             <b>Start date of leave: </b> $date_of_start <br><br>
             <b>End date of leave: </b> $date_of_end <br><br>
             <b>Addidtional notes: </b> $additional_notes <br>
@@ -142,7 +147,7 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
         // More headers
-        $headers .= 'From: <support@truckassist.co.za>' . "\r\n";
+        $headers .= 'From: <noreply@truckassist.co.za>' . "\r\n";
         $headers .= 'Cc: brian@truckassist.co.za' . "\r\n";
 
         mail($to,$subject,$message,$headers);
@@ -151,7 +156,7 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
         
 /*START OF PHP E-MAIL 2*/
 
-        //$to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za";
+        //$to = "$line_manager_email, $employee_email, v8alexander@gmail.com, caroline@truckassist.co.za, debi@truckassist.co.za";
         $to = "brian@truckassist.co.za";
         $subject = "New leave application form submitted by $logged_by";
 
@@ -162,7 +167,7 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             </head>
         <body>
         <p>A new leave application form has been submitted by $logged_by for dates between $date_of_start & $date_of_end</p>
-        <p><a href='https://app.truckassist.co.za/leave-application-decision.php'>Click this link to view/approve/decline this leave request</a></p>
+        <p><a href='https://app.truckassist.co.za/leave-application-status-hr.php'>Click this link to view/approve/decline this leave request</a></p>
         <p>
             <b>Employee Name: </b> $logged_by <br><br>
             <b>Employee Department: </b> $choose_department <br><br>
@@ -172,10 +177,10 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             <b>Number of days taken: </b> $number_of_days_taken <br><br>
             <b>Leave Type: </b> $leave_type <br><br>
             <b>Employee's Signature: </b> $your_signature <br><br>
-            <b>Was Leave Approved By Manager:</b> $leave_approved_by_manager <br><br>
+           
             <b>Start date of leave: </b> $date_of_start <br><br>
             <b>End date of leave: </b> $date_of_end <br><br>
-            <b>Addidtional notes: </b> $additional_notes <br>
+            <b>Additional notes: </b> $additional_notes <br>
         </p>
         </body>
         </html>
@@ -202,12 +207,10 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
             number_of_days_taken,
             leave_type,
             your_signature,
-            leave_approved_by_manager,
+          
             leave_approved_by_hr,
             date_of_start,
             date_of_end,
-            upload_picture,
-            upload_picture_name,
             additional_notes)
 			VALUES(
 			'$logged_by',
@@ -218,12 +221,10 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 			'$number_of_days_taken',
 			'$leave_type',
 			'$your_signature',
-			'$leave_approved_by_manager',
+			
                         'PENDING',
 			'$date_of_start',
                         '$date_of_end',
-			'$imagetmp',
-                        '$imagename',
 			'$additional_notes')";
         
 			if (mysqli_query($conn, $sql)) {
@@ -270,7 +271,7 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 									<div class="job-details">
 					<h4>
                         <p>
-                        <a href="leave-application-status-employee.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View all leave applications</button></a>
+                        <a href="leave-application-status-employee.php"><button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> View leave applications</button></a>
                         <a href="leave-application-form-employee.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Log another leave application</button></a>
                         <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a-->
                         <!--button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-refresh"></span> Refresh</button-->
@@ -295,49 +296,17 @@ echo "and the file ". basename( $_FILES["fileToUpload"]["name"]). " has been upl
 <p><b>Employee's e-mail: </b> <?php echo $employee_email; ?></p>
 <p><b>Line manager's e-mail: </b> <?php echo $line_manager_email; ?></p>
 <p><b>Number of days taken: </b> <?php echo $number_of_days_taken; ?></p>
-<p><b>Has the leave been approved by your line manager: </b> <?php echo $leave_approved_by_manager; ?></p>
+<!--p><b>Has the leave been approved by your line manager: </b> <?php echo $leave_approved_by_manager; ?></p-->
 <p><b>Start date of holiday: </b> <?php $date_of_start = @date("Y-m-d", strtotime($_POST["date-of-start"])); echo $date_of_start;?></p>
 <p><b>End date of holiday: </b> <?php $date_of_end = @date("Y-m-d", strtotime($_POST["date-of-end"])); echo $date_of_end;
 ?></p>
 <!--p><b>Name of uploaded picture: </b> <?php echo $imagename; ?></p-->
 <p><b>Additional Notes: </b> <?php echo $additional_notes; ?></p>
 <p>
-    <b>Supporting Document: </b>
+    <!--b>Supporting Document: </b-->
     <?php
     /* START OF IMAGE UPLOAD LOG*/
-            // Check if image file is a actual image or fake image
-            if(isset($_POST["submit"])) {
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if($check !== false) {
-                    //echo "The picture is a valid image - " . $check["mime"] . "";
-                    $uploadOk = 1;
-                } else {
-                    echo "The picture is not a valid image.";
-                    $uploadOk = 0;
-                }
-            }
 
-            // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 500000) {
-                echo "Sorry, your file is too large.";
-                $uploadOk = 0;
-            }
-
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-                echo " Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $uploadOk = 0;
-            }
-
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0) {
-                echo " Sorry, your file was not uploaded.";
-            // if everything is ok, try to upload file
-            } else{
-            //Get the content of the image and then add slashes to it 
-            $imagetmp=addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
-            echo "". basename( $_FILES["fileToUpload"]["name"]). " is a valid image and has been uploaded succesfully.";
-                }
         /* END OF IMAGE UPLOAD LOG*/
     ?>
 </p>

@@ -157,6 +157,7 @@ if ($_POST["g-recaptcha-response"]) {
                             <option>osman@truckassist.co.za</option>
                             <option>richard@truckassist.co.za</option>
                             <option>nastasha@truckassist.co.za</option>
+                            <option>brian@truckassist.co.za</option>
                             
                         </select>
                     </div>
@@ -167,7 +168,7 @@ if ($_POST["g-recaptcha-response"]) {
                     </div>
                     
                     <div class="form-group">
-                        <label for="employee-email">Your Truck Assist e-mail<sup></sup></label>
+                        <label for="employee-email">Your Truck Assist e-mail address<sup></sup></label>
                         <input type="text" class="form-control" name="employee-email">
                     </div>
                     
@@ -288,12 +289,11 @@ if ($_POST["g-recaptcha-response"]) {
                 </form>
                 <!-- start of file upload process-->
                 
-              
+              <!--
                     <label for="upload-picture">Supporting documentation (e.g. medical certificate, exam schedule etc.):</label>
                     <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
                     <!--p><input type="submit" value="Upload Image" name="submit"></p-->
               
-                <br>
                 <div class="form-group">
                     <label for="additional-notes">Comments / Motivation:</label>
                     <textarea class="form-control" rows="3" id="" name="additional-notes"></textarea>

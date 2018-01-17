@@ -96,11 +96,12 @@ if ($_POST["g-recaptcha-response"]) {
         <div class="row">
             <div class="col-sm-4">
 
-                <form action="faults-log-form-submit.php" method="post" enctype="multipart/form-data">
+                <form action="faults-log-form-submit-grain.php" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="sel1">Logged by (Operator's name):</label>
                         <select class="form-control" id="logged-by" name="logged-by">
+                            <option>Zakiyyah</option>
                             <option>Chelsea</option>
                             <option>Osman</option>
                             <option>Nastasha</option>

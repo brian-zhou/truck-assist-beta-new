@@ -73,7 +73,7 @@ session_start();
 						<div class="job-page-wrapper">
 							<div class="row">
 								<div class="col-md-12">
-									<h2>View/Edit Fault Log</h2>
+									<h3>View/Edit Fault Log</h3>
 									<div class="job-details">
 <?php
 include('include/connection.php');
@@ -101,7 +101,7 @@ foreach ($button_id as $selected_user_id) {
                 $date_of_complete = $row["date_of_complete"]; 
                 $upload_picture = $row["upload_picture"];
                 $additional_notes = $row["additional_notes"];            
- 			} 
+            } 
     }
 ?>
     <br>
@@ -230,8 +230,8 @@ foreach ($button_id as $selected_user_id) {
             <div class="form-group">
                         <label for="sel1">Fault has been resolved</label>
                         <select class="form-control" id="log-resolved" name="log-resolved">
-                            <option>YES</option>
                             <option>NO</option>
+                            <option>YES</option>
                         </select>
              </div>
             <hr>

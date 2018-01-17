@@ -80,10 +80,53 @@ if ($_POST["g-recaptcha-response"]) {
 						<div class="job-page-wrapper">
 							<div class="row">
 								<div class="col-md-12">
-									<h3>Leave Application Form</h3>
+									<h3>View/Approve/Decline Leave Application</h3>
 									<div class="job-details">
-										<h4>
-                        <p>
+<?php
+include('include/connection.php');
+
+@header("content-type:image/jpeg");
+$button_id = $_POST['button_id'];
+
+foreach ($button_id as $selected_user_id) {
+	//echo $selected_user_id . "<br>";
+
+ 	$sql = "SELECT * FROM leave_form WHERE id = $selected_user_id";
+ 	$result = mysqli_query($conn, $sql);
+
+ 	while($row = mysqli_fetch_assoc($result)){
+                $id = $row["id"];
+                $time_stamp = $row["time_stamp"];
+ 		$logged_by = $row["logged_by"];
+                //echo "$logged_by . 'IS LOGGED BY'";
+                $choose_department = $row["choose_department"]; 
+                $employee_email = $row["employee_email"];
+                $employee_position = $row["employee_position"];
+                $number_of_days_taken = $row["number_of_days_taken"];
+                $no_of_days_owing = $row["no_of_days_owing"];
+                $no_of_leave_days_taken = $row["no_of_leave_days_taken"];
+                $no_of_days_balance = $row["no_of_days_balance"];
+                $leave_type = $row["leave_type"];
+                $line_manager_email = $row["line_manager_email"];
+                $date_of_start = $row["date_of_start"];
+                $date_of_end = $row["date_of_end"]; 
+                $date_of_log = $row["date_of_log"];
+                $upload_picture_name = $row["upload_picture_name"]; 
+                $your_signature = $row["your_signature"];
+                $additional_notes = $row["additional_notes"];
+                
+                $leave_approved_by_hr = $row["leave_approved_by_hr"];
+                $hr_comments = $row["hr_comments"];
+                //$position = $row["position"];
+                //$additional_notes = $row["additional_notes"];
+                
+                
+            } 
+    }
+?>
+            <br>
+		<h4>
+                    <p>
                         <a href="dom-pdf-test.php"><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-export"></span> Download PDF</button></a>
                         <!--a href="faults-log-ajax-search.php"><button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> Search for logged faults</button></a>
                         <a href="faults-log-report.php"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> View Reports</button></a-->
@@ -97,41 +140,41 @@ if ($_POST["g-recaptcha-response"]) {
         <div class="row">
             <div class="col-sm-4">
 
-                <form action="leave-application-form-submit.php" method="post" enctype="multipart/form-data">
+                <form action="leave-application-form-submit-decision.php" method="post" enctype="multipart/form-data">
                     
                     <div class="form-group">
                         <label for="logged-by">Employee Name<sup></sup></label>
-                        <input type="text" class="form-control" name="logged-by" readonly>
+                        <input type="text" class="form-control" name="logged-by" value="<?php echo $logged_by; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label for="choose-department">Employee Department<sup></sup></label>
-                        <input type="text" class="form-control" name="choose-department" readonly>
+                        <input type="text" class="form-control" name="choose-department" value="<?php echo $choose_department; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label for="line-manager-email">Employee manager's e-mail<sup></sup></label>
-                        <input type="text" class="form-control" name="line-manager-email" readonly>
+                        <input type="text" class="form-control" name="line-manager-email" value="<?php echo $line_manager_email; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label for="employee-position">Position<sup></sup></label>
-                        <input type="text" class="form-control" name="employee-position" readonly>
+                        <input type="text" class="form-control" name="employee-position" value="<?php echo $employee_position; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label for="employee-email">Your Truck Assist e-mail<sup></sup></label>
-                        <input type="text" class="form-control" name="employee-email" readonly>
+                        <input type="text" class="form-control" name="employee-email" value="<?php echo $employee_email; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
-                        <label for="employee-email">Number of days taken<sup></sup></label>
-                        <input type="text" class="form-control" name="employee-email" readonly>
+                        <label for="number-of-days-taken">Number of days taken<sup></sup></label>
+                        <input type="text" class="form-control" name="number-of-days-taken" value="<?php echo $number_of_days_taken; ?>" readonly>
                     </div>
                     
                     <div class="form-group">
-                        <label for="your-signature">Your Signature <sup>initials only</sup></label>
-                        <input type="text" class="form-control" name="your-signature" readonly>
+                        <label for="your-signature"><?php echo $logged_by; ?>'s Signature <sup>initials only</sup></label>
+                        <input type="text" class="form-control" name="your-signature" value="<?php echo $your_signature; ?>" readonly>
                     </div>
 
                   
@@ -140,32 +183,49 @@ if ($_POST["g-recaptcha-response"]) {
             <div class="col-sm-4">
 
                
-                    <div class="form-group">
+                <div class="form-group">
                         <label for="leave-type">Type of leave applied for<sup></sup></label>
-                        <input type="text" class="form-control" name="leave-type" readonly>
+                        <input type="text" class="form-control" name="leave-type" value="<?php echo $leave_type; ?>" readonly>
                     </div> 
                 <br>
                 
-                  <div class="form-group">
+                 <div class="form-group">
+                        <label for="leave-type">Leave application time stamp<sup></sup></label>
+                        <input type="text" class="form-control" name="time-stamp" value="<?php echo $time_stamp; ?>" readonly>
+                    </div> 
+                <br>
+                
+                <div class="form-group">
+                        <label for="start-date">Start date: &nbsp;&ensp;&ensp;<sup></sup></label>
+                        <input type="text" class="form-control" name="date-of-start" value="<?php echo $date_of_start; ?>" readonly>
+                    </div> 
+                <br>
+                
+                 <div class="form-group">
+                        <label for="end-date">End Date: &nbsp;&ensp;&ensp;&ensp;<sup></sup></label>
+                        <input type="text" class="form-control" name="date-of-end" value="<?php echo $date_of_end; ?>" readonly>
+                    </div> 
+                <br>
+                
+                  <!--div class="form-group">
                     <label for="date">Start date: &nbsp;&ensp;&ensp;</label>
                     <input type="date" name="date-of-start" readonly>
-                </div>
+                </div-->
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label for="date">End Date: &nbsp;&ensp;&ensp;&ensp;</label>
                     <input type="date" name="date-of-end" readonly>
-                </div>
-
-                <br>
-
-                    <label for="upload-picture">Supporting documentation (e.g. medical certificate:</label>
-                    <p><input type="file" name="fileToUpload" id="fileToUpload" readonly></p>
-                    <!--p><input type="submit" value="Upload Image" name="submit"></p-->
+                </div-->
+        
+                <!-- START OF PICTURE -->
+                    <!--label for="upload-picture">Supporting documentation (e.g. medical certificate:</label>
+                    <p><input type="file" name="fileToUpload" id="fileToUpload" value="<?php echo $logged_by; ?>" readonly></p>
+                 
            
                 <br>
 
                 
-                            <!-- The Modal -->
+                         
 			<div id="myModal" class="modal">
 				  <span class="close">&times;</span>
 				  	<img class="modal-content" id="img01">
@@ -174,8 +234,11 @@ if ($_POST["g-recaptcha-response"]) {
 
             <p><?php echo '<img id="myImg" src="data:image/jpeg;base64,'.base64_encode($upload_picture).'"/>'; ?></p> 
             <br>
-            <h5><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download supporting documentation (if any) e.g. medical certificate, exam schedule etc.</a></p> </h5>
+            <h5><p><a href="download-fault-picture.php?id=<?php echo urlencode($id); ?>"><?php urlencode($upload_picture);?>Click here to download supporting documentation (if any) e.g. medical certificate, exam schedule etc.</a></p> </h5!-->
 
+        <!-- START OF PICTURE -->
+        
+            
  <!-- Start of the Modal Javascript -->
 			<script>
 			// Get the modal
@@ -212,7 +275,7 @@ if ($_POST["g-recaptcha-response"]) {
                 </div-->
                 
                 <div class="form-group">
-                        <label for="leave-approved">Leave has been approved by HR</label>
+                        <label for="leave-approved">Leave has been approved by Adrian Smit</label>
                         <select class="form-control" id="leave-approved" name="leave-approved-by-hr">
                             <option>PENDING</option>
                             <option>YES</option>
@@ -250,7 +313,7 @@ if ($_POST["g-recaptcha-response"]) {
 
         <hr>
         
-        <input type="submit" name="submit" class="btn btn-success" value = "Send to <?php echo $logged_by;?>" style="margin-bottom: 40px;">
+        <input type="submit" name="button_id" class="btn btn-success" value = "<?php echo $id; ?>" style="margin-bottom: 40px;">
         </form>
             
 										

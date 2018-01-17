@@ -101,8 +101,8 @@ session_start();
 <?php
 include('include/connection.php');
 
-    //$sql = "SELECT * FROM logged_faults ORDER BY `id` DESC";
-    $sql = "SELECT * FROM logged_faults ORDER BY `log_resolved` DESC";
+    $sql = "SELECT * FROM logged_faults ORDER BY `id` DESC";
+    //$sql = "SELECT * FROM logged_faults ORDER BY `log_resolved` DESC";
     //$count = "SELECT COUNT(*) FROM logged_faults";
     //echo $count;
     $result = mysqli_query($conn, $sql);

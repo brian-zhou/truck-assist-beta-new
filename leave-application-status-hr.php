@@ -113,27 +113,28 @@ include('include/connection.php');
     if (mysqli_num_rows($result)>0){
         echo "<table class='table table-hover table table-bordered' >";
         echo "<tr>";
-        echo "<th>ID</th>";
+        echo "<th>Record N<sup>o</sup>.</th>";
         echo "<th>Time Stamp</th>";
         echo "<th>Employee's Name</th>";
-        echo "<th>Department</th>";
-        echo "<th>E-mail</th>";
-        echo "<th>Number of days taken</th>";
-        echo "<th>Leave Type</th>";
+        echo "<th>Employee's Department</th>";
+        echo "<th>Employee's E-mail</th>";
+        echo "<th>Total N<sup>o</sup> of Days Requested</th>";
+        echo "<th>Type of Leave</th>";
         //echo "<th>Leave Approved By HR</th>";
        // echo "<th>Was Leave Approved By HR</th>";
         echo "<th>Start date of leave</th>";
         echo "<th>End date of leave</th>";
-        echo "<th>Supporting Document Name</th>";
+        //echo "<th>Supporting Document Name</th>";
         echo "<th>Motivation</th>";
         
-        echo "<th>Employee Signature</th>";
+        echo "<th>Employee's Signature [Initials Only]</th>";
         echo "<th>N<sup>o</sup> of days owing</th>";
         echo "<th>N<sup>o</sup> of leave days taken</th>";
         echo "<th>N<sup>o</sup> of days owing (balance)</th>";
-        echo "<th>Approve/Decline Request</th>";
+        
         echo "<th>HR Comments</th>";
-        echo "<th>Change Status</th>";
+        echo "<th>Approve/Decline Request</th>";
+        echo "<th>Edit Status</th>";
         echo "<br>";
         echo "<br>";
         
@@ -160,7 +161,7 @@ include('include/connection.php');
                 
                 echo "<td>" . $row["date_of_start"] . "</td>";
                 echo "<td>" . $row["date_of_end"] . "</td>"; 
-                echo "<td>" . $row["upload_picture_name"] . "</td>";
+                //echo "<td>" . $row["upload_picture_name"] . "</td>";
                 echo "<td>" . $row["additional_notes"] . "</td>";
                 //echo "<td>" . $row["leave_approved_by_hr"] . "</td>";
 
@@ -175,10 +176,12 @@ include('include/connection.php');
                 $no_of_days_balance = isset($row["no_of_days_balance"]) ? $row["no_of_days_balance"] : "";
                 echo "<td>" . $no_of_days_balance . "</td>";
 
-                echo "<td>" . $row["leave_approved_by_hr"] . "</td>";
+                
 
                 $hr_comments = isset($row["hr_comments"]) ? $row["hr_comments"] : "";
                 echo "<td>" . $hr_comments . "</td>"; 
+                
+                echo "<td>" . $row["leave_approved_by_hr"] . "</td>";
                 
                 echo "<td><input type='submit' class='btn btn-success' name='button_id[]' value='" . $row["id"] . "'</td></tr>";
              }

@@ -61,9 +61,9 @@
 									<li class='dropdown'><a href='' >LOGISTICS <b class='caret'></b></a>
 										<!-- submenu-wrapper -->
 										<div class='submenu-wrapper submenu-wrapper-topbottom'>
-											<div class='submenu-inner  submenu-inner-topbottom'>
+                                                                                <div class='submenu-inner  submenu-inner-topbottom'>
 												<ul class='dropdown-menu'>
-													<li><a href=''>Stock Control</a></li>
+													<li><a href=''>Stock Control System</a></li>
 												</ul>
 											</div><!-- /.submenu-inner -->
 										</div> <!-- /.submenu-wrapper -->
@@ -77,6 +77,8 @@
                                                                                                 
 													<li><a href='leave-application-form-employee.php'>Leave Application Form</a></li>
                                                                                                         <li><a href='leave-application-status-employee.php'>View all submitted leave requests</a></li>
+                                                                                                        <li><a href='http://tech.truckassist.co.za' target='_blank'>Password Manager</a></li>
+                                                                                                        <li><a href='https://app.truckassist.co.za/signature/truckassist-new-signature.html' target='_blank'>E-mail Signature Template</a></li>
 												</ul>
 											</div><!-- /.submenu-inner -->
 										</div> <!-- /.submenu-wrapper --> 
